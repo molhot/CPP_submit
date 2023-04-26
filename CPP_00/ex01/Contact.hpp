@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:31 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 00:40:20 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 15:58:42 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class Contact
         std::string _nickname;
         std::string _phonenumber;
         std::string _secret;
-        int         _index;
+        size_t      _index;
 
 	public:
 		Contact();
 		~Contact();
-        void        init(void);
+        void        init(size_t index);
         void        content_show();
 };

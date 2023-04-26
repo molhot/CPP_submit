@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:28 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 00:45:00 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 18:04:57 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,42 @@ Contact::~Contact()
 {
 }
 
-void    Contact::init(void)
+void    Contact::init(size_t index)
 {
+    this->_index = index + 1;
     std::cout << "input firstname" << std::endl;
     std::cin >> this->_firstname;
-	std::cout << this->_firstname << " is entered" << std::endl;
+    std::cout << "input lastname" << std::endl;
+    std::cin >> this->_lastname;
+    std::cout << "input nickname" << std::endl;
+    std::cin >> this->_nickname;
+    std::cout << "input phonenumber" << std::endl;
+    std::cin >> this->_phonenumber;
+    std::cout << "input secret" << std::endl;
+    std::cin >> this->_secret;
+}
+
+static	void	show_wd_eight(std::string sub)
+{
+	size_t	pos;
+
+	pos = 0;
+	while (sub[pos] != '\0' && pos != 10)
+	{
+		std::cout << sub[pos];
+		pos++;
+	}
+	if (sub[pos] != '\0')
+		std::cout << " ... ";
+	std::cout << " | ";
 }
 
 void    Contact::content_show(void)
 {
-    std::cout << this->_firstname << std::endl;
+    std::cout << this->_index;
+	std::cout << " | ";
+	show_wd_eight(this->_firstname);
+	show_wd_eight(this->_nickname);
+	show_wd_eight(this->_phonenumber);
+	std::cout << std::endl;
 }

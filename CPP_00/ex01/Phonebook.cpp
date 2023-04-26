@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:37 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 00:54:41 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 16:20:05 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    Phonebook::Manual(void)
 
 void    Phonebook::addcontact(int i)
 {
-    this->_contacts_[i % 8].init();
+    this->_contacts_[i % 8].init(i);
 }
 
 void    Phonebook::showcontact(int i)
