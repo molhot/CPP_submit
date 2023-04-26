@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 00:39:40 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:27:20 by mochitteiun      ###   ########.fr       */
+/*   Created: 2023/04/26 18:17:38 by mochitteiun       #+#    #+#             */
+/*   Updated: 2023/04/26 18:24:52 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include <limits>
-#include <iostream>
+#include <stdbool.h>
+#include <string>
 
-class Phonebook
-{
-    private:
-		Contact	_contacts_[8];
-		void	_addcontact_(void);
-	
-	public:
-		Phonebook();
-		~Phonebook();
-		void	Manual(void);
-		bool	addcontact(int i);
-		void	showcontact(int i);
-};
+bool	ft_isdigit(std::string sub);

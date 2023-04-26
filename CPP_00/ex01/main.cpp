@@ -6,14 +6,13 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:34 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:03:16 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 18:26:29 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include <limits>
 #include <iostream>
-#include <stdbool.h>
 
 bool	strcmp_cpp(std::string s1, std::string s2)
 {
@@ -28,21 +27,6 @@ bool	strcmp_cpp(std::string s1, std::string s2)
 	}
 	if (s2[position] != '\0')
 		return (false);
-	return (true);
-}
-
-bool	ft_isdigit(std::string sub)
-{
-	size_t  pos;
-
-	pos = 0;
-	while (sub[pos] != '\0')
-	{
-		if ('0' <= sub[pos] && sub[pos] <= '9')
-			pos++;
-		else
-			return (false);
-	}
 	return (true);
 }
 
@@ -64,9 +48,10 @@ int main(void)
 		std::cout << std::endl;
 		if (strcmp_cpp(operate, "ADD"))
 		{
-			book.addcontact(i);
-			std::cout << std::endl;
-			i++;
+			if (book.addcontact(i) == false)
+				std::cout << "phonenumber is only int" << std::endl;
+			else
+				i++;
 		}
 		else if (strcmp_cpp(operate, "SEARCH"))
 		{

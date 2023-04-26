@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:37 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 16:20:05 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 18:27:12 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void    Phonebook::Manual(void)
     std::cout << "1 ADD 2 SEARCH 3 EXIT" << std::endl;
 }
 
-void    Phonebook::addcontact(int i)
+bool    Phonebook::addcontact(int i)
 {
-    this->_contacts_[i % 8].init(i);
+    return (this->_contacts_[i % 8].init(i));
 }
 
 void    Phonebook::showcontact(int i)

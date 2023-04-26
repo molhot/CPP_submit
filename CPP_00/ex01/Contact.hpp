@@ -6,12 +6,13 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:31 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 15:58:42 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 18:19:23 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
+#include "utils.hpp"
 
 class Contact
 {
@@ -26,6 +27,6 @@ class Contact
 	public:
 		Contact();
 		~Contact();
-        void        init(size_t index);
+        bool        init(size_t index);
         void        content_show();
 };

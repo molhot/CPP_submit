@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:28 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:04:57 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/26 18:28:05 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Contact::~Contact()
 {
 }
 
-void    Contact::init(size_t index)
+bool	Contact::init(size_t index)
 {
     this->_index = index + 1;
     std::cout << "input firstname" << std::endl;
@@ -33,8 +33,11 @@ void    Contact::init(size_t index)
     std::cin >> this->_nickname;
     std::cout << "input phonenumber" << std::endl;
     std::cin >> this->_phonenumber;
+	if (ft_isdigit(this->_phonenumber) == false)
+		return (false);
     std::cout << "input secret" << std::endl;
     std::cin >> this->_secret;
+	return (true);
 }
 
 static	void	show_wd_eight(std::string sub)
@@ -54,6 +57,7 @@ static	void	show_wd_eight(std::string sub)
 
 void    Contact::content_show(void)
 {
+	std::cout << " | ";
     std::cout << this->_index;
 	std::cout << " | ";
 	show_wd_eight(this->_firstname);
