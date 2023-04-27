@@ -6,12 +6,11 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:51 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 01:30:37 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/27 10:03:33 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
-#include "Weapon.hpp"
 
 HumanB::HumanB()
 {
@@ -29,9 +28,9 @@ HumanB::HumanB(std::string namea):name(namea)
 	this->weapon_b = NULL;
 }
 
-HumanB::HumanB(std::string namea, Weapon *wep_b):name(namea), weapon_b(wep_b)
+HumanB::HumanB(std::string namea, Weapon &wep_b):name(namea), weapon_b(&wep_b)
 {
-	this->weapon_b->setType(wep_b->getType());
+	this->weapon_b->setType(wep_b.getType());
 	//std::cout << "weapon is " << this->weapon_b << std::endl;
 	//std::cout << this->name << " attacks with their " << (*(this->weapon_b)).getType() << std::endl;
 	//初期化を上記のように行わない（weapon_a(wep_a)）場合はweapon()という引数ナシの初期化が呼ばれる

@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:54 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 01:26:59 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/27 09:59:33 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class HumanB
 
 	public:
 		HumanB();
-		HumanB(std::string name, Weapon *wep_b);
+		HumanB(std::string name, Weapon &wep_b);
 		HumanB(std::string name);
 		~HumanB();
 		void		attack();
