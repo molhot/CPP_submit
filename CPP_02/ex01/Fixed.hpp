@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 21:52:28 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/29 17:12:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <float.h>
 
 class	FixNumber
 {
@@ -22,7 +23,13 @@ class	FixNumber
 		FixNumber();
 		~FixNumber();
 		FixNumber(const FixNumber &nbr);
+		FixNumber(const float &nbr);
+		FixNumber(const int &nbr);
 		FixNumber&			operator=(const FixNumber &nbr);
 		int					get_value();
 		void				set_value(const int nbr);
+		float				toFloat(void) const;
+		int					toInt(void) const;
 };
+
+std::ostream &operator<<(std::ostream &out, const FixNumber &tgt);
