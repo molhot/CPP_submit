@@ -1,4 +1,4 @@
-NAME = ex01
+NAME = ex02
 CC = g++ -std=c++98
 SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
