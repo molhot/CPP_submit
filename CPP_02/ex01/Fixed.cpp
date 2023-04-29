@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/29 17:19:56 by user             ###   ########.fr       */
+/*   Updated: 2023/04/29 17:35:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ FixNumber::FixNumber():value(0)
 FixNumber::FixNumber(const float &nbr):value(0)
 {
 	std::cout << "Float construcor called" << std::endl;
+	std::cout << "this float is " << nbr << std::endl;
 	this->value = roundf(nbr * (1 << this->fractionalBit));
+	std::cout << "input value is " << this->value << std::endl;
 }
 
 FixNumber::FixNumber(const int &nbr)
