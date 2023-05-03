@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:48 by user              #+#    #+#             */
-/*   Updated: 2023/05/04 05:23:53 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 05:24:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 class ClapTrap
 {
-    private:
+    public:
         std::string _name;
         size_t      _hp;
         size_t      _ep;
