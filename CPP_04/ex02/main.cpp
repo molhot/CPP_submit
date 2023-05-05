@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:14:04 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 20:49:03 by user             ###   ########.fr       */
+/*   Updated: 2023/05/05 20:52:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int main()
     {
         if (pos % 2  == 1)
         {
+            //Animal() is now protected, so Animal() can't callable but Cat or Dog can access so main is still running
+            //but above can't work, when ex01 working
+            //anim[pos] = new Animal();
             anim[pos] = new Cat();
             std::cout << anim[pos]->getType() << std::endl;
             //if you don't use dynamic cast, can not access to setIdea and getIdea
@@ -72,5 +75,5 @@ int main()
 
     delete cat;
     
-    system("leaks -q ex01");
+    system("leaks -q ex02");
 }
