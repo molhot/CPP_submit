@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:43:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/06 14:53:06 by user             ###   ########.fr       */
+/*   Updated: 2023/05/07 15:24:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ Form& Form::operator=(Form const &sub)
 void	Form::beSigned(Breaucrat const &sub)
 {
 	if (sub.getGrade() <= this->_grade4sign)
+	{
+		std::cout << "this is signed!" << std::endl;
 		this->_signed = true;
+	}
+	else
+		std::cout << "this is not satisfied the rule" << std::endl;
 }
 
 bool	Form::get_Signstatus() const

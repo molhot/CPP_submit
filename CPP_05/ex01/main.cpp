@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:40:12 by user              #+#    #+#             */
-/*   Updated: 2023/05/06 14:48:30 by user             ###   ########.fr       */
+/*   Updated: 2023/05/07 15:25:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,21 @@
 
 int main()
 {
-    Breaucrat b("jaeskim", 1000);
-	std::cout << b << std::endl;
-	std::cout << std::endl;
+    Form        		form("form1", 10, 10);
+    Breaucrat		  	user("user1", 1);
 
-	std::cout << "increase test" << std::endl;
+	std::cout << "grade is " << user.getGrade() << std::endl;
+	form.beSigned(user);
 	std::cout << std::endl;
-    try
-    {
-        b.increaseGrade(9);
-        std::cout << b << std::endl;
-        b.increaseGrade(1);
-        std::cout << b << std::endl;
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
+	try
+	{
+		user.decreaseGrade(10);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	std::cout << std::endl;
-	std::cout << "decrease test" << std::endl;
-	std::cout << std::endl;
-
-    try
-    {
-        b.decreaseGrade(140);
-        std::cout << b << std::endl;
-        b.decreaseGrade(10);
-        std::cout << b << std::endl;
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    return 0;
+	std::cout << "grade is " << user.getGrade() << std::endl;
+	form.beSigned(user);
 }
