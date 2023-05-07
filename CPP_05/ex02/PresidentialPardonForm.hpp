@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 12:43:41 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 15:42:58 by user             ###   ########.fr       */
+/*   Created: 2023/05/07 15:38:57 by user              #+#    #+#             */
+/*   Updated: 2023/05/07 23:24:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_HPP
-#define Form_HPP
+#ifndef PresidentialPardonForm_HPP
+#define PresidentialPardonForm_HPP
 
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
-#include <stdbool.h>
-#include "Breaucrat.hpp"
 
-class Form
+class PresidentialPardonForm: public Form
 {
 	private:
-		std::string _name;
-		bool		_signed;
-		int			_grade4sign;
-		int			_grade4execute;
 
 	public:
-		Form(std::string name, int sign_grade, int execute_grade);
-		~Form();
-		Form(Form const &sub);
-		Form& operator=(Form const &sub);
-		void	beSigned(Breaucrat const &sub);
-		bool	get_Signstatus() const;
-		int		get_Grade4Sign() const;
-		int		get_Grade4excete() const;
+		PresidentialPardonForm(std::string target);
+		~PresidentialPardonForm();
+		PresidentialPardonForm(PresidentialPardonForm const &sub);
+		PresidentialPardonForm& operator=(PresidentialPardonForm const &sub);
+		void	execute(Bureaucrat const &sub) const;
 };
 
 #endif

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Breaucrat.cpp                                      :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 22:45:08 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 20:26:24 by user             ###   ########.fr       */
+/*   Created: 2023/05/07 15:37:50 by user              #+#    #+#             */
+/*   Updated: 2023/05/07 23:03:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Breaucrat.hpp"
+#include "Bureaucrat.hpp"
 
-Breaucrat::Breaucrat(): _name("no_name"), _grade(150)
+Bureaucrat::Bureaucrat(): _name("no_name"), _grade(150)
 {
 	std::cout << "Breaucrat with no argment constructor called" << std::endl;
 }
 
-Breaucrat::Breaucrat(std::string name): _name(name), _grade(150)
+Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(150)
 {
 	std::cout << "Breaucrat with argment constructor called" << std::endl;
 }
 
-Breaucrat::Breaucrat(std::string name, int grade): _name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "Breaucrat constructor called" << std::endl;
 	if (grade < 1)
@@ -38,17 +38,17 @@ Breaucrat::Breaucrat(std::string name, int grade): _name(name)
 	this->_grade = grade;
 }
 
-Breaucrat::~Breaucrat()
+Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Breaucrat destructor called" << std::endl;
 }
 
-Breaucrat::Breaucrat(Breaucrat const &sub): _name(sub._name), _grade(sub._grade)
+Bureaucrat::Bureaucrat(Bureaucrat const &sub): _name(sub._name), _grade(sub._grade)
 {
 	std::cout << "Breaucrat copy constructor called" << std::endl;
 }
 
-Breaucrat& Breaucrat::operator=(Breaucrat const &sub)
+Bureaucrat& Bureaucrat::operator=(Bureaucrat const &sub)
 {
 	if (this == &sub)
 		return (*this);
@@ -57,55 +57,69 @@ Breaucrat& Breaucrat::operator=(Breaucrat const &sub)
 	return (*this);
 }
 
-std::string	Breaucrat::getName()
+std::string	Bureaucrat::getName()
 {
 	return (this->_name);
 }
 
-int	Breaucrat::getGrade() const
+int	Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
 
-void	Breaucrat::increaseGrade()
+void	Bureaucrat::increaseGrade()
 {
 	if (this->_grade - 1 < 1)
-		throw (Breaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());
 	if (this->_grade - 1 > 150)
-		throw (Breaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = this->_grade - 1;
 }
 
-void	Breaucrat::increaseGrade(int grade)
+void	Bureaucrat::increaseGrade(int grade)
 {
 	if (this->_grade - grade < 1)
-		throw (Breaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());
 	if (this->_grade - grade > 150)
-		throw (Breaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = this->_grade - grade;
 }
 
-void	Breaucrat::decreaseGrade()
+void	Bureaucrat::decreaseGrade()
 {
 	if (this->_grade + 1 < 1)
-		throw (Breaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());
 	if (this->_grade + 1 > 150)
-		throw (Breaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = this->_grade + 1;
 }
 
-void	Breaucrat::decreaseGrade(int grade)
+void	Bureaucrat::decreaseGrade(int grade)
 {
 	if (this->_grade + grade < 1)
-		throw (Breaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());
 	if (this->_grade + grade > 150)
-		throw (Breaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = this->_grade + grade;
 }
 
 //High error crass
 
-Breaucrat::GradeTooHighException::GradeTooHighException()
+void	Bureaucrat::executeForm(Form const &sub)
+{
+	try
+	{
+		sub.execute(*this);
+		std::cout << *this << " executed" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << *this << " cannnot executed" << std::endl;
+	}
+	
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
 	std::cout << "GradeTooHighException constructor called" << std::endl;
 }
@@ -115,14 +129,14 @@ Breaucrat::GradeTooHighException::GradeTooHighException()
 // 	std::cout << "GradeTooHighException destructor called" << std::endl;
 // }
 
-const char* Breaucrat::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grede is over 1");
 }
 
 //Low error crass
 
-Breaucrat::GradeTooLowException::GradeTooLowException()
+Bureaucrat::GradeTooLowException::GradeTooLowException()
 {
 	std::cout << "GradeTooLowException constructor called" << std::endl;
 }
@@ -132,14 +146,14 @@ Breaucrat::GradeTooLowException::GradeTooLowException()
 // 	std::cout << "GradeTooLowException destructor called" << std::endl;
 // }
 
-const char* Breaucrat::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grede is under 150");
 }
 
 //override output func
 
-std::ostream &operator<<(std::ostream &out, Breaucrat &tgt)
+std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt)
 {
 	out << tgt.getName() << ", bureaucrat grade " << tgt.getGrade();
 	return (out);	
