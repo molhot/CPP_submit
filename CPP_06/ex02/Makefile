@@ -1,6 +1,6 @@
-NAME = ex03
+NAME = ex02
 CC = g++ -std=c++98
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
+SRCS = main.cpp A.cpp B.cpp C.cpp func.cpp Base.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
