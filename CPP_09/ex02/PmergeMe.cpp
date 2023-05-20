@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:20 by user              #+#    #+#             */
-/*   Updated: 2023/05/20 17:28:36 by user             ###   ########.fr       */
+/*   Updated: 2023/05/20 17:43:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,5 +219,34 @@ void	PmergeMe::sort_list()
 	list_sorted = separate_list(this->merge_list);
 	clock_t	end = clock();
 	show_mergedlistcontainer(list_sorted);
-	std::cout << "this merge is " << static_cast<double>(end - start) << " time passed" << std::endl;
+	std::cout << "this merge is " << static_cast<double>(end - start)  / CLOCKS_PER_SEC << " time passed" << std::endl;
+}
+
+static	void	show_mergedvectcontainer(std::vector<int> vect)
+{
+	size_t	pos;
+
+	pos = 0;
+	while (pos != vect.size())
+	{
+		std::cout << vect[pos] << " ";
+		pos++;
+	}
+	std::cout << "<< vect merged contents" << std::endl;
+}
+
+static	std::vector<int> separate_vect(std::vector<int> vect)
+{
+
+}
+
+void	PmergeMe::sort_vector()
+{
+	std::vector<int>	vect_sorted;
+
+	clock_t	start = clock();
+	vect_sorted = separate_vect(this->merge_vector);
+	clock_t	end = clock();
+	show_mergedvectcontainer(vect_sorted);
+	std::cout << "this merge is " << static_cast<double>(end - start)  / CLOCKS_PER_SEC << " time passed" << std::endl;
 }

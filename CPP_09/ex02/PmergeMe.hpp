@@ -5,6 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: Invalid date        by ***********       #+#    #+#             */
+/*   Updated: 2023/05/20 17:40:21 by user             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:23 by user              #+#    #+#             */
 /*   Updated: 2023/05/20 17:27:05 by user             ###   ########.fr       */
 /*                                                                            */
@@ -38,6 +48,7 @@ class PmergeMe
 		void	show_vectorcontainer() const;
 
 		void	sort_list();
+		void	sort_vector();
 		//void	sort_vector();
 
 		bool	add_nbr(int nbr);
@@ -50,16 +61,5 @@ class PmergeMe
     			}
 		};
 };
-
-/*********^****************^*********/
-/********^ ^**************^ ^********/
-/*******^   ^aaaaaaaaaaaa^   ^*******/
-/*****c                        c*****/
-/****c       @          @       c****/
-/***c                            c***/
-/***c       ===   |    ===        c**/
-/****c         \__/\__/          c***/
-/*****c                         c****/
-/******catcatcatcatcatcatcatcatc*****/
 
 #endif
