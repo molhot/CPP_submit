@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:20 by user              #+#    #+#             */
-/*   Updated: 2023/05/20 17:43:57 by user             ###   ########.fr       */
+/*   Updated: 2023/05/20 20:29:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,9 +235,75 @@ static	void	show_mergedvectcontainer(std::vector<int> vect)
 	std::cout << "<< vect merged contents" << std::endl;
 }
 
+static	void	merge(std::vector<int> *vect, size_t left, size_t mid, size_t right)
+{
+	int 						i;
+    int 						j;
+	int 						k;
+	std::vector<int>::iterator	begin;
+    std::vector<int> 			temp;
+
+	i = left;
+	j = mid + 1;
+    while (i <= mid && j <= right)
+	{
+        if ((*vect)[i] <= (*vect)[j]) 
+		{
+            temp.push_back((*vect)[i]);
+            i++;
+        } 
+		else 
+		{
+            temp.push_back((*vect)[j]);
+            j++;
+        }
+    }
+    while (i <= mid) 
+	{
+        temp.push_back((*vect)[i]);
+        i++;
+    }
+    while (j <= right)
+	{
+        temp.push_back((*vect)[j]);
+        j++;
+    }
+	k = left;
+	begin = temp.begin();
+    while (begin != temp.end())
+	{
+        (*vect)[k] = *begin;
+        k++;
+		begin++;
+    }
+}
+
+static	void	mergesort(std::vector<int> *vect, size_t left, size_t right)
+{
+	int	mid;
+
+	if (left < right)
+	{
+		mid = (left + right) / 2;
+		mergesort(vect, left, mid);
+		mergesort(vect, mid + 1, right);
+
+		merge(vect, left, mid, right);
+	}
+}
+
 static	std::vector<int> separate_vect(std::vector<int> vect)
 {
+	size_t				size;
 
+	if (vect.empty() == true)
+	{
+		std::cout << "this vect is not filled" << std::endl;
+		return (vect);
+	}
+	size = vect.size();
+	mergesort(&vect, 0, size - 1);
+	return (vect);
 }
 
 void	PmergeMe::sort_vector()

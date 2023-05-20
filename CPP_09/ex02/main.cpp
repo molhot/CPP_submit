@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:16 by user              #+#    #+#             */
-/*   Updated: 2023/05/20 17:21:49 by user             ###   ########.fr       */
+/*   Updated: 2023/05/20 20:25:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 	
 	pm.show_containerinput();
 	pm.sort_list();
+	pm.sort_vector();
 }
 
 /*
