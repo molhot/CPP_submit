@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:34 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:26:29 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/27 21:58:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include <limits>
 #include <iostream>
+#include <string>
+#include <vector>
 
 bool	strcmp_cpp(std::string s1, std::string s2)
 {
@@ -27,62 +29,96 @@ bool	strcmp_cpp(std::string s1, std::string s2)
 	}
 	if (s2[position] != '\0')
 		return (false);
+	if (position == 0)
+		return (false);
 	return (true);
+}
+
+bool	operator_exec(std::string operate, Phonebook *book, int *i)
+{
+	std::string	index_str;
+	int			index;
+
+	if (operate == "ADD")
+	{
+		if (book->addcontact(*i) == false)
+			std::cout << "add contact missed" << std::endl;
+		else
+		{
+			std::cout << *i + 1 << "contact filled" << std::endl;
+			*i = *i + 1;
+		}
+		if (*i == 8)
+		{
+			std::cout << "contact is maxed" << std::endl;
+			*i = 0;
+		}
+	}
+	else if (operate == "SEARCH")
+	{
+		std::cout << "input number 1 to 8 which you want to show info" << std::endl;
+		std::getline(std::cin, index_str);
+		try
+		{
+			index = std::stoi(index_str);
+			if (index < 1 || 8 < index)
+				std::cout << "input number 1 to 8" << std::endl;
+			else if (index > *i)
+				std::cout << "this is not filled..." << std::endl;
+			else
+				book->showcontact(index);
+		}
+		catch(...)
+		{
+			std::cout << "input int handling number" << std::endl;
+		}
+		std::cin.clear();
+	}
+	else if (operate == "EXIT")
+	{
+		std::cout << "BUY!!:x" << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
+bool	operater_ornot(std::string operater)
+{
+	if (operater == "ADD")
+		return (true);
+	else if (operater == "SEARCH")
+		return (true);
+	else if (operater == "EXIT")
+		return (true);
+	return (false);
 }
 
 int main(void)
 {
 	Phonebook	book;
-	size_t		i;
-	std::string	index_str;
-	int			index;
-	std::string name;
+	int			i;
 	std::string operate;
-	
-	i = 0;
+	char 		ch;
+ 
 	book.Manual();
+	i = 0;
 	while (true)
 	{
-		std::cout << "put your operate" << std::endl;
-		std::cin >> operate;
-		std::cout << std::endl;
-		if (strcmp_cpp(operate, "ADD"))
+		operate = "";
+		std::cout << "put your operate\n";
+		std::cout.flush();
+		std::getline(std::cin, operate);
+		std::cin.clear();
+		if (operater_ornot(operate) == true)
 		{
-			if (book.addcontact(i) == false)
-				std::cout << "phonenumber is only int" << std::endl;
-			else
-				i++;
+			if (operator_exec(operate, &book, &i) == false)
+				break;
 		}
-		else if (strcmp_cpp(operate, "SEARCH"))
+		else
 		{
-			std::cout << "input number 1 to 8 which you want to show info" << std::endl;
-			std::cin >> index_str;
-			if (ft_isdigit(index_str) == false) 
-				std::cout << "enter number" << std::endl;
-			else
-			{
-				try
-				{
-					index = std::stoi(index_str);
-					if (index < 1 || 8 < index)
-						std::cout << "input number 1 to 8" << std::endl;
-					else if (index > i)
-						std::cout << "this is not filled..." << std::endl;
-					else
-						book.showcontact(index);
-				}
-				catch(...)
-				{
-					std::cout << "input unser int max" << std::endl;
-				}
-			}
+			std::cout << "input is [ADD] or [SEARCH] or [EXIT]" << std::endl;
+			std::cout.flush();
 		}
-		else if (strcmp_cpp(operate, "EXIT"))
-		{
-			std::cout << "BUY!!:x" << std::endl;
-			break ;
-		}
-		book.Manual();
 	}
 	return (0);
 }

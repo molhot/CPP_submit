@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:28 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:28:05 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/27 22:04:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,27 @@ bool	Contact::init(size_t index)
 {
     this->_index = index + 1;
     std::cout << "input firstname" << std::endl;
-    std::cin >> this->_firstname;
+	std::getline(std::cin, this->_firstname);
+	if (this->_firstname == "")
+		return (false);
     std::cout << "input lastname" << std::endl;
-    std::cin >> this->_lastname;
+	std::getline(std::cin, this->_lastname);
+	if (this->_lastname == "")
+		return (false);
     std::cout << "input nickname" << std::endl;
-    std::cin >> this->_nickname;
+	std::getline(std::cin, this->_nickname);
+	if (this->_nickname == "")
+		return (false);
     std::cout << "input phonenumber" << std::endl;
-    std::cin >> this->_phonenumber;
+	std::getline(std::cin, this->_phonenumber);
+	if (this->_phonenumber == "")
+		return (false);
 	if (ft_isdigit(this->_phonenumber) == false)
 		return (false);
     std::cout << "input secret" << std::endl;
-    std::cin >> this->_secret;
+	std::getline(std::cin, this->_secret);
+	if (this->_secret == "")
+		return (false);
 	return (true);
 }
 
@@ -57,7 +67,7 @@ static	void	show_wd_eight(std::string sub)
 
 void    Contact::content_show(void)
 {
-	std::cout << " | ";
+	std::cout << " ";
     std::cout << this->_index;
 	std::cout << " | ";
 	show_wd_eight(this->_firstname);
