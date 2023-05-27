@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:24:11 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 18:24:17 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/28 00:23:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int main()
 	while (level != "exit")
 	{
 		std::cout << "input level" << std::endl;
-		std::cin >> level;
+		std::getline(std::cin, level);
 		harl.complain(level);
+		std::cin.clear();
 	}
 }
