@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filemanage.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:09:17 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 18:16:27 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/28 00:17:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	Fileinfo::replace_wd(void)
 	pos = text.find(replaced_wd, pos);
 	while (pos != std::string::npos)
 	{
-		text.replace(pos, replaced_wd.length(), replace_wd);
+		//text.replace(pos, replaced_wd.length(), replace_wd);
+		text = text.substr(0, pos) + replace_wd + text.substr(pos + replaced_wd.length());
 		pos = pos + replace_wd.length();
 		pos = text.find(replaced_wd, pos);
 	}
