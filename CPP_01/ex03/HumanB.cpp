@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:51 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 10:03:33 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/27 23:22:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ HumanB::HumanB(std::string namea, Weapon &wep_b):name(namea), weapon_b(&wep_b)
 
 void	HumanB::attack()
 {
-	if (this->weapon_b == NULL)
+	if (this->weapon_b == nullptr)
 		std::cout << "no... weapon... " << std::endl;
 	else
 	{

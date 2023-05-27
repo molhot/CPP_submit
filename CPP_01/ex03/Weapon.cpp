@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:59:00 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 00:43:56 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/27 23:21:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ Weapon::Weapon(std::string weapon):type(weapon)
 
 Weapon::Weapon(const Weapon &weapon)
 {
-	if (&weapon == NULL)
-		return ;
 	this->setType(weapon.getType());
 }
 
@@ -41,8 +39,6 @@ Weapon& Weapon::operator=(const Weapon &weapon)
 
 std::string	Weapon::getType() const
 {
-	if (this == NULL)
-		std::cout << "no __ weapon __ ...";
 	return (this->type);
 }
 
