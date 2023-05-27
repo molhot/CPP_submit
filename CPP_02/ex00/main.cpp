@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:41:16 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 21:48:40 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/28 00:49:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ int	main(void)
 	std::cout << a.get_value() << std::endl;
 	std::cout << b.get_value() << std::endl;
 	std::cout << c.get_value() << std::endl;
+
+	a.set_value(10);
+
+	std::cout << a.get_value() << std::endl;
+	
 	return 0;
 }
