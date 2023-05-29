@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:31 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:19:23 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/05/29 08:57:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
-#include "utils.hpp"
 
 class Contact
 {

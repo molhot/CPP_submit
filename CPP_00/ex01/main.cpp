@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:34 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/27 21:58:40 by user             ###   ########.fr       */
+/*   Updated: 2023/05/29 10:40:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	strcmp_cpp(std::string s1, std::string s2)
 	return (true);
 }
 
-bool	operator_exec(std::string operate, Phonebook *book, int *i)
+bool	operator_exec(std::string operate, Phonebook *book, int *i, bool *fillornot)
 {
 	std::string	index_str;
 	int			index;
@@ -52,6 +52,7 @@ bool	operator_exec(std::string operate, Phonebook *book, int *i)
 		{
 			std::cout << "contact is maxed" << std::endl;
 			*i = 0;
+			*fillornot = true;
 		}
 	}
 	else if (operate == "SEARCH")
@@ -63,6 +64,8 @@ bool	operator_exec(std::string operate, Phonebook *book, int *i)
 			index = std::stoi(index_str);
 			if (index < 1 || 8 < index)
 				std::cout << "input number 1 to 8" << std::endl;
+			else if (*fillornot == true)
+				book->showcontact(index);
 			else if (index > *i)
 				std::cout << "this is not filled..." << std::endl;
 			else
@@ -99,9 +102,11 @@ int main(void)
 	int			i;
 	std::string operate;
 	char 		ch;
+	bool		contact_filled;
  
 	book.Manual();
 	i = 0;
+	contact_filled = false;
 	while (true)
 	{
 		operate = "";
@@ -111,7 +116,7 @@ int main(void)
 		std::cin.clear();
 		if (operater_ornot(operate) == true)
 		{
-			if (operator_exec(operate, &book, &i) == false)
+			if (operator_exec(operate, &book, &i, &contact_filled) == false)
 				break;
 		}
 		else
