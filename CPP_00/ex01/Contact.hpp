@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:31 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/29 08:57:59 by user             ###   ########.fr       */
+/*   Updated: 2023/06/03 14:11:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Contact
         std::string _phonenumber;
         std::string _secret;
         size_t      _index;
+        bool        ft_isdigit(std::string sub);
 
 	public:
 		Contact();

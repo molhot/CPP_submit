@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:28 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/03 14:08:54 by user             ###   ########.fr       */
+/*   Updated: 2023/06/03 14:12:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Contact::~Contact()
 {
 }
 
-static bool	ft_isdigit(std::string sub)
+bool	Contact::ft_isdigit(std::string sub)
 {
 	size_t  pos;
 
