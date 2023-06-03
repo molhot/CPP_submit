@@ -7,7 +7,7 @@ CPPFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 ${NAME}:${OBJS}
-	${CC} ${OBJS} -o ${CPPFLAGS} ${NAME}
+	${CC} ${OBJS} ${CPPFLAGS} -o${NAME}
 
 clean:
 	rm -f $(OBJS)
