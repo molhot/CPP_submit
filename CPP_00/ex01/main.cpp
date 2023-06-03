@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:34 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/29 10:40:56 by user             ###   ########.fr       */
+/*   Updated: 2023/06/03 13:35:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ bool	operator_exec(std::string operate, Phonebook *book, int *i, bool *fillornot
 	{
 		std::cout << "input number 1 to 8 which you want to show info" << std::endl;
 		std::getline(std::cin, index_str);
+		std::cin.clear();
 		try
 		{
 			index = std::stoi(index_str);
@@ -75,7 +76,6 @@ bool	operator_exec(std::string operate, Phonebook *book, int *i, bool *fillornot
 		{
 			std::cout << "input int handling number" << std::endl;
 		}
-		std::cin.clear();
 	}
 	else if (operate == "EXIT")
 	{
@@ -101,7 +101,6 @@ int main(void)
 	Phonebook	book;
 	int			i;
 	std::string operate;
-	char 		ch;
 	bool		contact_filled;
  
 	book.Manual();
