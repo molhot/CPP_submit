@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:51 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/27 23:22:30 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 13:09:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ HumanB::HumanB(std::string namea):name(namea)
 	this->weapon_b = NULL;
 }
 
-HumanB::HumanB(std::string namea, Weapon &wep_b):name(namea), weapon_b(&wep_b)
+HumanB::HumanB(std::string namea, Weapon &wep_b):weapon_b(&wep_b), name(namea)
 {
 	this->weapon_b->setType(wep_b.getType());
 	//std::cout << "weapon is " << this->weapon_b << std::endl;
