@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:39:34 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/03 13:35:21 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 12:53:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,12 @@ int main(void)
 		std::cout << "put your operate\n";
 		std::cout.flush();
 		std::getline(std::cin, operate);
+		if (std::cin.eof() == true)
+		{
+			std::cin.clear();
+			std::cout << "this is EOF!!" << std::endl;
+			exit(1);
+		}
 		std::cin.clear();
 		if (operater_ornot(operate) == true)
 		{
