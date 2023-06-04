@@ -1,13 +1,13 @@
 NAME = ex01
-CC = g++ -std=c++98
+CXX = c++ -std=c++98
 SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-CPPFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 ${NAME}:${OBJS}
-	${CC} ${OBJS} ${CPPFLAGS} -o ${NAME}
+	${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
 	rm -f $(OBJS)
