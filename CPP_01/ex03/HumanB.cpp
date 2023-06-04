@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:51 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 13:09:36 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:49:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,10 @@ void	HumanB::attack()
 		//std::cout << "weapon is " << this->weapon_b << std::endl;
 		std::cout << this->name << " attacks with their " << (*(this->weapon_b)).getType() << std::endl;
 	}
+}
+
+void	HumanB::setWeapon(Weapon &some)
+{
+	std::cout << some.getType() << std::endl;
+	this->weapon_b = &some;
 }

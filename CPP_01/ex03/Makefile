@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = ex03
 CXX = c++ -std=c++98
 SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 OBJS = $(SRCS:.cpp=.o)

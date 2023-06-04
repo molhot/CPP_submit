@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:14:04 by user              #+#    #+#             */
-/*   Updated: 2023/05/28 12:38:56 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 17:39:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int main()
     {
         //if you don't use virtual class, will call only animal deconstructor...
         delete anim[pos];
+        std::cout << "~~" << std::endl;
         pos++;
     }
 

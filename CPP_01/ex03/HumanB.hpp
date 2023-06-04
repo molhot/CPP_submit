@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:54 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 09:59:33 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/04 18:42:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB();
 		void		attack();
-		void		set_weapon(std::string weapon);
+		void		setWeapon(Weapon &some);
 };
