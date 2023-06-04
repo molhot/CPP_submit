@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = megaphone
 CXX = c++ -std=c++98
 SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
