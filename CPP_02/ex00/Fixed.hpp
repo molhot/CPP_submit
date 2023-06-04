@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 21:52:28 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ class	FixNumber
 		~FixNumber();
 		FixNumber(const FixNumber &nbr);
 		FixNumber&			operator=(const FixNumber &nbr);
-		int					get_value();
-		void				set_value(const int nbr);
+		int					getRawBits();
+		void				setRawBits(const int nbr);
 };

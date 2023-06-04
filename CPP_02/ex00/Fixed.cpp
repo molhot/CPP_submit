@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/27 21:55:58 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,26 @@ FixNumber::~FixNumber()
 FixNumber::FixNumber(const FixNumber &nbr):value(nbr.value)
 {
 	std::cout << "copy constractor called" << std::endl;
-	set_value(nbr.value);
+	setRawBits(nbr.value);
 }
 
 FixNumber& FixNumber::operator=(const FixNumber &nbr)
 {
 	std::cout << "copy asaiment operator called" << std::endl;
-	set_value(nbr.value);
+	if (this == &nbr)
+		return (*this);
+	setRawBits(nbr.value);
 	return (*this);
 }
 
-int	FixNumber::get_value()
+int	FixNumber::getRawBits()
 {
-	std::cout << "get_value function called" << std::endl;
+	std::cout << "getRawBits function called" << std::endl;
 	return (this->value);
 }
 
-void	FixNumber::set_value(const int nbr)
+void	FixNumber::setRawBits(const int nbr)
 {
-	std::cout << "SET_value function called" << std::endl;
+	std::cout << "setRawBits function called" << std::endl;
 	this->value = nbr;
 }

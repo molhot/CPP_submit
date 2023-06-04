@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/29 20:19:58 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class	FixNumber
 		bool				operator<=(FixNumber const &nbr);
 		bool				operator==(FixNumber const &nbr);
 		bool				operator!=(FixNumber const &nbr);
-		int					get_value() const;
-		void				set_value(const int nbr);
+		int					getRawBits() const;
+		void				setRawBits(const int nbr);
 		float				toFloat(void) const;
 		int					toInt(void) const;
 		static FixNumber&			min(FixNumber &nb1, FixNumber &nb2);

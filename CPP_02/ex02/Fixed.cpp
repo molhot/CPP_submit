@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/29 20:26:10 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,50 +38,52 @@ FixNumber::~FixNumber()
 
 FixNumber::FixNumber(const FixNumber &nbr):value(nbr.value)
 {
-	this->value = nbr.get_value();
+	this->value = nbr.getRawBits();
 }
 
 FixNumber& FixNumber::operator=(const FixNumber &nbr)
 {
-	this->value = nbr.get_value();
+	if (this == &nbr)
+		return (*this);
+	this->value = nbr.getRawBits();
 	return (*this);
 }
 
 bool			FixNumber::operator>(FixNumber const &nbr) const
 {
-	return (this->get_value() > nbr.get_value());
+	return (this->getRawBits() > nbr.getRawBits());
 }
 
 bool			FixNumber::operator<(FixNumber const &nbr) const
 {
-	return (this->get_value() > nbr.get_value());
+	return (this->getRawBits() > nbr.getRawBits());
 }
 
 bool			FixNumber::operator>=(FixNumber const &nbr)
 {
-	return (this->get_value() >= nbr.get_value());
+	return (this->getRawBits() >= nbr.getRawBits());
 }
 
 bool			FixNumber::operator<=(FixNumber const &nbr)
 {
-	return (this->get_value() <= nbr.get_value());
+	return (this->getRawBits() <= nbr.getRawBits());
 }
 
 bool			FixNumber::operator==(FixNumber const &nbr)
 {
-	return (this->get_value() == nbr.get_value());
+	return (this->getRawBits() == nbr.getRawBits());
 }
 
 bool			FixNumber::operator!=(FixNumber const &nbr)
 {
-	return (this->get_value() != nbr.get_value());
+	return (this->getRawBits() != nbr.getRawBits());
 }
 
 FixNumber	FixNumber::operator+(FixNumber const &nbr)
 {
 	FixNumber	val(*this);
 	
-	val.set_value(this->get_value() + nbr.get_value());
+	val.setRawBits(this->getRawBits() + nbr.getRawBits());
 	return (val);
 }
 
@@ -89,7 +91,7 @@ FixNumber	FixNumber::operator-(FixNumber const &nbr)
 {
 	FixNumber	val(*this);
 	
-	val.set_value(this->get_value() - nbr.get_value());
+	val.setRawBits(this->getRawBits() - nbr.getRawBits());
 	return (val);
 }
 
@@ -99,9 +101,9 @@ FixNumber	FixNumber::operator*(FixNumber const &nbr)
 	long		tmp1;
 	long		tmp2;
 
-	tmp1 = (long)this->get_value();
-	tmp2 = (long)nbr.get_value();
-	val.set_value(tmp1 * tmp2 / (1 << this->fractionalBit));
+	tmp1 = (long)this->getRawBits();
+	tmp2 = (long)nbr.getRawBits();
+	val.setRawBits(tmp1 * tmp2 / (1 << this->fractionalBit));
 	return (val);
 }
 
@@ -111,9 +113,9 @@ FixNumber	FixNumber::operator/(FixNumber const &nbr)
 	long		tmp1;
 	long		tmp2;
 
-	tmp1 = (long)this->get_value();
-	tmp2 = (long)nbr.get_value();
-	val.set_value(tmp1 * (1 << this->fractionalBit) / tmp2);
+	tmp1 = (long)this->getRawBits();
+	tmp2 = (long)nbr.getRawBits();
+	val.setRawBits(tmp1 * (1 << this->fractionalBit) / tmp2);
 	return (val);
 }
 
@@ -151,12 +153,12 @@ std::ostream &operator<<(std::ostream &out, const FixNumber &tgt)
 	return (out);	
 }
 
-int	FixNumber::get_value() const
+int	FixNumber::getRawBits() const
 {
 	return (this->value);
 }
 
-void	FixNumber::set_value(const int nbr)
+void	FixNumber::setRawBits(const int nbr)
 {
 	this->value = nbr;
 }

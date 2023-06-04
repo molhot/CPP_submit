@@ -6,11 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/05/28 12:21:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 17:21:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include <stdio.h>
+#include <stdlib.h>
 
 void    testing(ClapTrap nanka)
 {
@@ -61,8 +63,12 @@ int main()
     test3.be_Repaired(20);
     std::cout << std::endl;
 
+    std::cout << "address check" << std::endl;
     ClapTrap *test4 = new ClapTrap("TEST4");
     testing(test4);
     test4->be_Repaired(100);
+    delete test4;
+    std::cout << "~~~~~~" << std::endl;
+
     std::cout << std::endl;
 }

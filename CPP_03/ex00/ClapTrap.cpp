@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/05/28 12:19:39 by user             ###   ########.fr       */
+/*   Updated: 2023/06/04 17:17:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,17 @@
 ClapTrap::ClapTrap(std::string name):_name(name)
 {
     std::cout << "ClapTrap constructor called" << std::endl;
-    this->_a = new size_t;
-    *this->_a = 0;
-    this->_ep = new size_t;
-    *this->_ep = 10;
-    this->_hp = new size_t;
-    *this->_hp = 10;
+    this->_a = 0;
+    this->_ep = 10;
+    this->_hp = 10;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &other):_name(other._name)
 {
     std::cout << "ClapTrap copyconstructor called" << std::endl;
-    this->_a = new size_t;
-    *this->_a = *other._a;
-    this->_ep = new size_t;
-    *this->_ep = *other._ep;
-    this->_hp = new size_t;
-    *this->_hp = *other._hp;
+    this->_a = other._a;
+    this->_ep = other._ep;
+    this->_hp = other._hp;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &other)
@@ -41,30 +35,27 @@ ClapTrap& ClapTrap::operator=(ClapTrap const &other)
     if (this == &other)
         return (*this);
     this->_name = other._name;
-    *this->_hp = *other._hp;
-    *this->_ep = *other._ep;
-    *this->_a = *other._a;
+    this->_hp = other._hp;
+    this->_ep = other._ep;
+    this->_a = other._a;
     return (*this);
 }
 
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap destructor called" << std::endl;
-    delete  this->_a;
-    delete  this->_ep;
-    delete  this->_hp;
 }
 
 void    ClapTrap::attack(const std::string &target)
 {
-    if (*this->_ep == 0)
+    if (this->_ep == 0)
         std::cout << this->_name << " no ep, so this machine can't move" << std::endl;
-    else if (*this->_hp == 0)
+    else if (this->_hp == 0)
         std::cout << this->_name << " no hp, so this machine can't move" << std::endl;
     else
     {
-        std::cout << this->_name << " attacks " << target << " causing " << *this->_a << " points of damage!" << std::endl;
-        *this->_ep = *this->_ep - 1;
+        std::cout << this->_name << " attacks " << target << " causing " << this->_a << " points of damage!" << std::endl;
+        this->_ep = this->_ep - 1;
     }
 }
 
@@ -72,31 +63,31 @@ void    ClapTrap::takeDamage(unsigned int amount)
 {
     size_t  tmp_hp;
 
-    if (*this->_hp == 0)
+    if (this->_hp == 0)
         std::cout << this->_name << " no hp, so this machine can't dameged more than now" << std::endl;
     else
     {
         std::cout << this->_name << " attacked " << amount << "damage" << std::endl;
-        tmp_hp = *this->_hp;
-        *this->_hp = *this->_hp - amount;
-        if (tmp_hp < *this->_hp)
-            *this->_hp = 0;
-        std::cout << this->_name << " now hp is " << *this->_hp << std::endl;
+        tmp_hp = this->_hp;
+        this->_hp = this->_hp - amount;
+        if (tmp_hp < this->_hp)
+            this->_hp = 0;
+        std::cout << this->_name << " now hp is " << this->_hp << std::endl;
     }
 }
 
 void    ClapTrap::be_Repaired(unsigned int amount)
 {
-    if (*this->_ep == 0)
+    if (this->_ep == 0)
         std::cout << this->_name << " no ep, so this machine can't move" << std::endl;
-    else if (*this->_hp == 0)
+    else if (this->_hp == 0)
         std::cout << this->_name << " no hp, so this machine can't removed" << std::endl;
     else
     {
         std::cout << this->_name << " repaired" << amount << "hp!" << std::endl;
-        *this->_ep = *this->_ep - 1;
-        *this->_hp = *this->_hp + amount;
-        std::cout << this->_name << " now hp is " << *this->_hp << std::endl;
+        this->_ep = this->_ep - 1;
+        this->_hp = this->_hp + amount;
+        std::cout << this->_name << " now hp is " << this->_hp << std::endl;
     }
 }
 
