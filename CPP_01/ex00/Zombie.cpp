@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:46 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:55:50 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/05 21:13:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Zombie::Zombie(const Zombie &cpzombie)
 
 Zombie& Zombie::operator=(const Zombie &zpy)
 {
+	if (this == &zpy)
+		return (*this);
 	std::cout << "operator constructer is called" << std::endl;
 	this->name = zpy.name;
 	std::cout << "this address is " << this << std::endl;

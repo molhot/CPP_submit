@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:09:17 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/28 00:17:09 by user             ###   ########.fr       */
+/*   Updated: 2023/06/05 21:22:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	Fileinfo::replace_wd(void)
 	if (text == "\0")
 	{
 		std::cout << "empty file" << std::endl;
+		return ;
+	}
+	if (replaced_wd == "\0" || replace_wd == "\0")
+	{
+		std::cout << "erroe input" << std::endl;
 		return ;
 	}
 	size_t		pos = 0;

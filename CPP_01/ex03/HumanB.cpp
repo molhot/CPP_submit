@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:51 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 18:49:43 by user             ###   ########.fr       */
+/*   Updated: 2023/06/05 21:17:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ HumanB::HumanB(std::string namea, Weapon &wep_b):weapon_b(&wep_b), name(namea)
 
 void	HumanB::attack()
 {
-	if (this->weapon_b == nullptr)
+	if (this->weapon_b == NULL)
 		std::cout << "no... weapon... " << std::endl;
 	else
 	{

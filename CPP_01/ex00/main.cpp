@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:25:18 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 19:31:03 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/05 21:06:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int main()
 	Zombie *zom4 = newZombie("test");
 	zom4->makesound();
 	randomChump("test2");
+	delete zom4;
 
 	// std::cout << "input second zombiename" << std::endl;
 	// std::cin >> zombie2;
