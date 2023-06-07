@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:46 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/05 21:13:31 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:23:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Zombie::Zombie(std::string name)
 
 Zombie::~Zombie()
 {
-	std::cout << this-> name << "is destructed" << std::endl;
+	std::cout << this-> name << " is destructed" << std::endl;
 }
 
 Zombie::Zombie(const Zombie &cpzombie)
