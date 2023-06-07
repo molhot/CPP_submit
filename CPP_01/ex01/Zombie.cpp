@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:38:46 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 18:32:43 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:06:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Zombie::~Zombie()
 	std::cout << this-> name << "is destructed" << std::endl;
 }
 
-void	Zombie::makesound()
+void	Zombie::announce()
 {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

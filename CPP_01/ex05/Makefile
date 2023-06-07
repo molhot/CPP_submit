@@ -1,5 +1,5 @@
 NAME = ex05
-CXX = g++ -std=c++98
+CXX = c++ -std=c++98
 SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror

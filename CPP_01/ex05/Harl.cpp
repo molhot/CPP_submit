@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:23:38 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/28 00:28:23 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:17:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ void	Harl::complain(std::string level)
 	size_t	position = 0;
 	while (position < 4 && levels[position].compare(level) != 0)
 		position++;
-	if (position < 4)
+	// if (position < 4)
+	// 	(this->*(levelfunc[position]))();
+	try
+	{
 		(this->*(levelfunc[position]))();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "no matching" << std::endl;
+	}
+	
 }

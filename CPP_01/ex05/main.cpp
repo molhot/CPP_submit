@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:24:11 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/05/28 00:23:59 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:19:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int main()
 	Harl		harl;
 
 	level = "";
-	while (level != "exit")
+	std::cout << "input [DEBUG, INFO, WARNING, ERROR]" << std::endl;
+	while (true)
 	{
 		std::cout << "input level" << std::endl;
 		std::getline(std::cin, level);
