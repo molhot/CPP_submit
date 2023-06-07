@@ -1,6 +1,6 @@
 NAME = ex01
 CXX = c++ -std=c++98
-SRCS = main.cpp ZombieHorde.cpp Zombie.cpp
+SRCS = main.cpp zombieHorde.cpp Zombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror
 

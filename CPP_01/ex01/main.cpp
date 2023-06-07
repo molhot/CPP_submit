@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:38:29 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 18:33:14 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:30:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 {
 	Zombie	*horde;
 
-	horde = zombieHorde(3, "motitteiunon?");
+	horde = zombieHorde(10, "motitteiunon?");
 	//change_test(horde);
 	//horde[1].makesound();
 	std::cout << "destruct move now" << std::endl;
