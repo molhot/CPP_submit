@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:48:39 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/07 00:58:25 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:34:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int	main()
 {
 	Weapon	bobwep = Weapon("tile");
 	HumanA	bob("bob", bobwep);
-	//bob.set_weapon(NULL);
 	
 	bob.attack();
-	//bob_n.attack();
 
 	Weapon	alicewep = Weapon("camera");
 	HumanB	alice("alice", alicewep);
