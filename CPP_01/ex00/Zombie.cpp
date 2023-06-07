@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:46 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/07 23:23:54 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:26:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Zombie& Zombie::operator=(const Zombie &zpy)
 	return (*this);
 }
 
-void	Zombie::makesound()
+void	Zombie::announce()
 {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

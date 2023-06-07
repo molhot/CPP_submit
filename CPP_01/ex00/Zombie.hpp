@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:56 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 19:21:59 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/07 23:26:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Zombie
 		Zombie(const Zombie &cpzombie);
 		Zombie& operator=(const Zombie &cpzombie);
 		~Zombie();
-		void	makesound();
+		void	announce();
 };
 
 Zombie*	newZombie(std::string name);

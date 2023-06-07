@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:36 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/26 18:55:37 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/06/07 23:26:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void randomChump(std::string name)
 {
 	Zombie	zombie(name);
-	zombie.makesound();
+	zombie.announce();
 }

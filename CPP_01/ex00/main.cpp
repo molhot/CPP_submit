@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:25:18 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/05 21:06:42 by user             ###   ########.fr       */
+/*   Updated: 2023/06/07 23:27:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	testzombi(Zombie test)
 {
-	test.makesound();
+	test.announce();
 }
 
 int main()
@@ -44,11 +44,12 @@ int main()
 	std::cout << "-----------------------" << std::endl;
 	
 	Zombie *zom4 = newZombie("test");
-	zom4->makesound();
+	zom4->announce();
 	randomChump("test2");
 	delete zom4;
 
 	// std::cout << "input second zombiename" << std::endl;
 	// std::cin >> zombie2;
 	// Zombie::newZombie(zombie2);
+	system("leaks -q ex00");
 }
