@@ -6,11 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:49 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/08 23:25:38 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 23:36:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUmanA_HPP
+#ifndef HumanA_HPP
 #define HumanA_HPP
 
 #include "Weapon.hpp"
