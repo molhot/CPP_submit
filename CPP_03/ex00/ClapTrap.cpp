@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 20:28:39 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 20:31:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    ClapTrap::attack(const std::string &target)
         std::cout << this->_name << " no hp, so this machine can't move" << std::endl;
     else
     {
-        std::cout << this->_name << " attacks " << target << " causing " << this->_a << " points of damage!" << std::endl;
+        std::cout << " ClapTrap " << this->_name << " attacks " << target << " , causing " << this->_a << " points of damage!" << std::endl;
         this->_ep = this->_ep - 1;
     }
 }
