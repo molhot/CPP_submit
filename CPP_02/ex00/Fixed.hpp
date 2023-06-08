@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 23:33:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	Fixed_HPP
+#define	Fixed_HPP
 
 #include <iostream>
 
@@ -26,3 +29,5 @@ class	FixNumber
 		int					getRawBits();
 		void				setRawBits(const int nbr);
 };
+
+#endif

@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/08 00:13:50 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 23:34:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	Fixed_HPP
+#define	Fixed_HPP
 
 #include <iostream>
 #include <cmath>
@@ -33,3 +36,5 @@ class	FixNumber
 };
 
 std::ostream &operator<<(std::ostream &out, const FixNumber &tgt);
+
+#endif
