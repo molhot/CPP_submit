@@ -6,42 +6,58 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 05:00:43 by user              #+#    #+#             */
-/*   Updated: 2023/05/04 15:51:22 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 21:57:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+#include "ScavTrap.hpp"
+
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
-    std::cout << "Scav Trap constructor called" << std::endl;
+    std::cout << "SCAVTRAP constructor called :)" << std::endl;
     this->_hp = 100;
     this->_ep = 50;
     this->_a = 20;
 }
 
-// ScavTrap::ScavTrap(ScavTrap const &sub): ClapTrap(sub._name)
-// {
-//     std::cout << "Scav Trap copyconstructor called" << std::endl;
-//     this->_name = sub._name;
-//     this->_hp = sub._hp;
-//     this->_ep = sub._ep;
-//     this->_a = sub._a;
-// }
+ScavTrap::ScavTrap(ScavTrap const &other): ClapTrap(other._name)
+{
+    std::cout << "SCAVTRAP copy constructor called !!" << std::endl;
+    this->_hp = other._hp;
+    this->_ep = other._ep;
+    this->_a = other._a;
+}
 
-// ScavTrap& ScavTrap::operator=(ScavTrap const &sub)
-// {
-//     std::cout << "Scav Trap operator called" << std::endl;
-//     this->_name = sub._name;
-//     this->_hp = sub._hp;
-//     this->_ep = sub._ep;
-//     this->_a = sub._a;
-//     return (*this);
-// }
+ScavTrap& ScavTrap::operator=(ScavTrap const &other)
+{
+    std::cout << "SCAVTRAP operand constructor called !!" << std::endl;
+    if (this == &other)
+        return (*this);
+    this->_name = other._name;
+    this->_hp = other._hp;
+    this->_ep = other._ep;
+    this->_a = other._a;
+    return (*this);
+}
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "Scav Trap denstructor called" << std::endl;
+    std::cout << "SCAVTRAP denstructor called x(" << std::endl;
+}
+
+void    ScavTrap::attack(const std::string &target)
+{
+    if (this->_ep == 0)
+        std::cout << this->_name << " NOEPSOICANTMOVE!" << std::endl;
+    else if (this->_hp == 0)
+        std::cout << this->_name << " NOHPSOICANTMOVE" << std::endl;
+    else
+    {
+        std::cout << " ScavTrap " << this->_name << " ATTACKS " << target << " , CAUSING " << this->_a << " P O I N T S!" << std::endl;
+        this->_ep = this->_ep - 1;
+    }
 }
 
 void    ScavTrap::GuardGate()

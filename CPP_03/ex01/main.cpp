@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 21:37:38 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:12:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,10 @@ int main()
     test_clap1.attack("nanka");
     std::cout << std::endl;
     test3.attack("nanka");
+
+    ClapTrap *nanka = &test_scav1;
+    ScavTrap *nanka2 = &test_scav1;
+
+    nanka->attack("nnn");
+    nanka2->attack("nnn");
 }
