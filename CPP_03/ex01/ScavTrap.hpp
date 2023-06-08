@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 05:00:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 21:31:48 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 21:52:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 class   ScavTrap: public ClapTrap
 {
     private:
-        ScavTrap();
 
     public:
         ScavTrap(std::string name);
