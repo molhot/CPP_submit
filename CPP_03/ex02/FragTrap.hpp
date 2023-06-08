@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:53:28 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:03:28 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 00:12:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FlagTrap_HPP
+#define FlagTrap_HPP
 
 #include "ClapTrap.hpp"
 
@@ -23,3 +26,5 @@ class FragTrap: public ClapTrap
         ~FragTrap();
         void    highFivesGuys(void);
 };
+
+#endif
