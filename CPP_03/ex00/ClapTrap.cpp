@@ -6,27 +6,21 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/04 17:17:52 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 20:28:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name):_name(name)
+ClapTrap::ClapTrap(std::string name):_name(name), _a(0), _ep(10), _hp(10)
 {
     std::cout << "ClapTrap constructor called" << std::endl;
-    this->_a = 0;
-    this->_ep = 10;
-    this->_hp = 10;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &other):_name(other._name)
+ClapTrap::ClapTrap(ClapTrap const &other):_name(other._name), _a(other._a), _ep(other._ep), _hp(other._hp)
 {
     std::cout << "ClapTrap copyconstructor called" << std::endl;
-    this->_a = other._a;
-    this->_ep = other._ep;
-    this->_hp = other._hp;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &other)
@@ -76,7 +70,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
     }
 }
 
-void    ClapTrap::be_Repaired(unsigned int amount)
+void    ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->_ep == 0)
         std::cout << this->_name << " no ep, so this machine can't move" << std::endl;
