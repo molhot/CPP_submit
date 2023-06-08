@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:15 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 03:01:15 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ WrongCat& WrongCat::operator=(WrongCat const &sub)
     return (*this);
 }
 
-void    WrongCat::makesound()const
+void    WrongCat::makeSound()const
 {
     std::cout << "ABATAKETABURA" << std::endl;
 }

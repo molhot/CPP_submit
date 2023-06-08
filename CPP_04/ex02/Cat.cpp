@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:22:35 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 18:30:04 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ Cat& Cat::operator=(Cat const &sub)
     return (*this);
 }
 
-void    Cat::makesound() const
+void    Cat::makeSound() const
 {
     std::cout << "two!...nya-" << std::endl;
 }

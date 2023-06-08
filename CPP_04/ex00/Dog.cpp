@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:31 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 00:27:15 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Dog::~Dog()
     std::cout << "Dog destructor called" << std::endl;
 }
 
-void    Dog::makesound() const
+void    Dog::makeSound() const
 {
     std::cout << "one!" << std::endl;
 }

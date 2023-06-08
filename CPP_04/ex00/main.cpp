@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:14:04 by user              #+#    #+#             */
-/*   Updated: 2023/06/03 13:09:52 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ int main()
 
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
-    i->makesound(); //will output the cat sound!
-    j->makesound();
-    meta->makesound();
+    i->makeSound(); //will output the cat sound!
+    j->makeSound();
+    meta->makeSound();
     delete meta;
     delete j;
     delete i;
 
     const WrongAnimal* wrong_meta = new WrongAnimal();
     std::cout << wrong_meta->get_Type() << " " << std::endl;
+    wrong_meta->makeSound();
 
     const WrongCat* wrong_cat = new WrongCat();
     std::cout << wrong_cat->get_Type() << " " << std::endl;
+    wrong_cat->makeSound();
 
     delete wrong_meta;
     delete wrong_cat;

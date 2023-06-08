@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:18:47 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 00:26:40 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class Animal
     public:
         Animal();
         Animal(std::string type);
-        ~Animal();
+        virtual ~Animal();
         Animal(Animal const &sub);
         Animal &operator=(Animal const &sub);
-        virtual void    makesound()const;
+        virtual void    makeSound()const;
         std::string     getType()const;
 };
 

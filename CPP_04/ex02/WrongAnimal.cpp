@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:08 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 02:58:44 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ WrongAnimal& WrongAnimal::operator=(WrongAnimal const &sub)
     return (*this);
 }
 
-void    WrongAnimal::makesound() const
+void    WrongAnimal::makeSound() const
 {
     std::cout << "nantyarakantyara" << std::endl;
 }

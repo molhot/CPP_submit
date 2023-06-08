@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:18 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 02:15:25 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ class WrongCat: public WrongAnimal
         ~WrongCat();
         WrongCat(WrongCat const &sub);
         WrongCat &operator=(WrongCat const &sub);
-        void    makesound()const;
+        void    makeSound()const;
 };

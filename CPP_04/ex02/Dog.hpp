@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:28 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 19:29:27 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Dog: public Animal, public Brain
         ~Dog();
         Dog(Dog const &sub);
         Dog &operator=(Dog const &sub);
-        void    makesound() const;
+        void    makeSound() const;
         void    getIdea()const;
         void    setIdea(size_t i, std::string idea);
 };

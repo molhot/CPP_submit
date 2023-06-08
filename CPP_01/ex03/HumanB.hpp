@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:58:54 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/07 23:44:37 by user             ###   ########.fr       */
+/*   Updated: 2023/06/08 23:26:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HUmanB_HPP
+#define HumanB_HPP
 
 #include "Weapon.hpp"
 
@@ -26,3 +29,5 @@ class HumanB
 		void		attack();
 		void		setWeapon(Weapon &some);
 };
+
+#endif
