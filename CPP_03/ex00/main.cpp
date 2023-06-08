@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 20:29:34 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 00:32:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int main()
     test1.attack("TEST2");
     test1.beRepaired(10);
     test1.takeDamage(10);
+    std::cout << "hp over load!!" << std::endl;
+    test1.beRepaired(4294967295);
     std::cout << std::endl;
     std::cout << "test over hp damaged" << std::endl;
     std::cout << std::endl;

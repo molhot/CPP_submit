@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 21:57:06 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 00:48:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ class ClapTrap
 {
     public:
         std::string _name;
-        size_t      _hp;
-        size_t      _ep;
-        size_t      _a;
+        unsigned int      _hp;
+        unsigned int      _ep;
+        unsigned int      _a;
     
     public:
         ClapTrap(std::string name);

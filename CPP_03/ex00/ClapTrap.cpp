@@ -6,19 +6,19 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 20:31:05 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 00:32:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name):_name(name), _a(0), _ep(10), _hp(10)
+ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _a(0)
 {
     std::cout << "ClapTrap constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &other):_name(other._name), _a(other._a), _ep(other._ep), _hp(other._hp)
+ClapTrap::ClapTrap(ClapTrap const &other):_name(other._name),  _hp(other._hp), _ep(other._ep), _a(other._a)
 {
     std::cout << "ClapTrap copyconstructor called" << std::endl;
 }
@@ -55,7 +55,7 @@ void    ClapTrap::attack(const std::string &target)
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-    size_t  tmp_hp;
+    unsigned int  tmp_hp;
 
     if (this->_hp == 0)
         std::cout << this->_name << " no hp, so this machine can't dameged more than now" << std::endl;
@@ -72,6 +72,8 @@ void    ClapTrap::takeDamage(unsigned int amount)
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
+    unsigned int  tmp_hp;
+
     if (this->_ep == 0)
         std::cout << this->_name << " no ep, so this machine can't move" << std::endl;
     else if (this->_hp == 0)
@@ -80,7 +82,13 @@ void    ClapTrap::beRepaired(unsigned int amount)
     {
         std::cout << this->_name << " repaired" << amount << "hp!" << std::endl;
         this->_ep = this->_ep - 1;
+        tmp_hp = this->_hp;
         this->_hp = this->_hp + amount;
+        if (tmp_hp > this->_hp)
+        {
+            std::cout << "over max hp!!" << std::endl;
+            this->_hp = 4294967295;
+        }
         std::cout << this->_name << " now hp is " << this->_hp << std::endl;
     }
 }
