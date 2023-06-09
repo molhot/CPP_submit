@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/05/04 16:03:51 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 11:11:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 int main()
 {
-    //ClapTrap test_clap1("crap1");
+    ClapTrap test_clap1("crap1");
+    test_clap1.attack("aa");
+
     ScavTrap test_scav1("scav1");
     FragTrap test_frag1("frag1");
 
