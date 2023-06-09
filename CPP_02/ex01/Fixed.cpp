@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/06 22:18:48 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 21:25:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ std::ostream &operator<<(std::ostream &out, const FixNumber &tgt)
 	return (out);	
 }
 
-int	FixNumber::getRawBits()
+int	FixNumber::getRawBits() const
 {
 	std::cout << "getRawBits function called" << std::endl;
 	return (this->value);

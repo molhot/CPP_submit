@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:14:04 by user              #+#    #+#             */
-/*   Updated: 2023/06/04 17:39:36 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 12:10:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int main()
         if (pos % 2  == 1)
         {
             anim[pos] = new Cat();
+            if (anim[pos] == NULL)
+                return (error_new(pos, anim));
             std::cout << anim[pos]->getType() << std::endl;
             //あくまでこれはAnimalの配列のため、ただAnimalを継承しているためこんな書き方ができる
             //if you don't use dynamic cast, can not access to setIdea and getIdea

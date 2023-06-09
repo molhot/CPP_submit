@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/08 23:34:12 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 19:14:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	FixNumber
 		FixNumber(const float &nbr);
 		FixNumber(const int &nbr);
 		FixNumber&			operator=(const FixNumber &nbr);
-		int					getRawBits();
+		int					getRawBits(void) const;
 		void				setRawBits(const int nbr);
 		float				toFloat(void) const;
 		int					toInt(void) const;

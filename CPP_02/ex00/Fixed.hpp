@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/08 23:33:42 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 19:14:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	FixNumber
 		~FixNumber();
 		FixNumber(const FixNumber &nbr);
 		FixNumber&			operator=(const FixNumber &nbr);
-		int					getRawBits();
+		int					getRawBits(void) const;
 		void				setRawBits(const int nbr);
 };
 
