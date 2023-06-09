@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:28 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 11:51:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef Dog_HPP
+#define Dog_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
@@ -27,3 +30,5 @@ class Dog: public Animal, public Brain
         void    getIdea()const;
         void    setIdea(size_t i, std::string idea);
 };
+
+#endif

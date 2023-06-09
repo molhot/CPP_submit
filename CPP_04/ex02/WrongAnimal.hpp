@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:12 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 11:51:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WrongAnimal_HPP
+#define WrongAnimal_HPP
 
 #include <iostream>
 
@@ -27,3 +30,5 @@ class WrongAnimal
         std::string get_Type()const;
         void    set_Type(std::string Type);
 };
+
+#endif

@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:28 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 11:16:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef Dog_HPP
+#define Dog_HPP
 
 #include "Animal.hpp"
 
@@ -23,3 +26,5 @@ class Dog: public Animal
         Dog &operator=(Dog const &sub);
         void    makeSound() const;
 };
+
+#endif
