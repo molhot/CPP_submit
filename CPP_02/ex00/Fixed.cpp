@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 23:21:39 by user             ###   ########.fr       */
+/*   Updated: 2023/06/10 01:45:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	Fixed::getRawBits() const
 	return (this->_value);
 }
 
-void	Fixed::setRawBits(const int nbr)
+void	Fixed::setRawBits(int const nbr)
 {
 	std::cout << "setRawBits function called" << std::endl;
 	this->_value = nbr;

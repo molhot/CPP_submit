@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 23:22:11 by user             ###   ########.fr       */
+/*   Updated: 2023/06/10 02:04:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Fixed::Fixed():_value(0)
 {
-	// std::cout << "default constractor called" << std::endl;
+	std::cout << "default constractor called" << std::endl;
 }
 
 Fixed::Fixed(const float &nbr):_value(0)
 {
-	// std::cout << "Float construcor called" << std::endl;
+	std::cout << "Float construcor called" << std::endl;
 	// std::cout << "this float is " << nbr << std::endl;
 	this->_value = roundf(nbr * (1 << this->_fractionalBit));
 	// std::cout << "input _value is " << this->_value << std::endl;
@@ -27,22 +27,24 @@ Fixed::Fixed(const float &nbr):_value(0)
 
 Fixed::Fixed(const int &nbr)
 {
-	// std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	this->_value = nbr << this->_fractionalBit;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "delimiter called" << std::endl;
+	std::cout << "delimiter called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &nbr):_value(nbr._value)
 {
+	std::cout << "copy constractor called" << std::endl;
 	this->_value = nbr.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed &nbr)
 {
+	std::cout << "copy asaiment operator called" << std::endl;
 	if (this == &nbr)
 		return (*this);
 	this->_value = nbr.getRawBits();
@@ -187,10 +189,10 @@ const Fixed&	Fixed::min(Fixed const &nb1, Fixed const &nb2)
 	return (nb1);
 }
 
-Fixed &min(Fixed &a, Fixed &b)
-{
-	return (Fixed::min(a, b));
-}
+// Fixed &min(Fixed &a, Fixed &b)
+// {
+// 	return (Fixed::min(a, b));
+// }
 
 Fixed&	Fixed::max(Fixed &nb1, Fixed &nb2)
 {
@@ -206,7 +208,7 @@ const Fixed&	Fixed::max(Fixed const &nb1, Fixed const &nb2)
 	return (nb2);
 }
 
-Fixed &max(Fixed &a, Fixed &b)
-{
-	return (Fixed::max(a, b));
-}
+// Fixed &max(Fixed &a, Fixed &b)
+// {
+// 	return (Fixed::max(a, b));
+// }
