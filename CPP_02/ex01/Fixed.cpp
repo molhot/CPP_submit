@@ -6,23 +6,23 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 22:39:26 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 23:22:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed():value(0)
+Fixed::Fixed():_value(0)
 {
 	std::cout << "default constractor called" << std::endl;
 }
 
-Fixed::Fixed(const float &nbr):value(0)
+Fixed::Fixed(const float &nbr):_value(0)
 {
 	std::cout << "Float construcor called" << std::endl;
 	std::cout << "this float is " << nbr << std::endl;
-	this->value = roundf(nbr * (1 << this->fractionalBit));
-	std::cout << "input value is " << this->value << std::endl;
+	this->_value = roundf(nbr * (1 << this->_fractionalBit));
+	std::cout << "input _value is " << this->_value << std::endl;
 }
 
 Fixed::Fixed(const int &nbr)
@@ -33,7 +33,7 @@ Fixed::Fixed(const int &nbr)
 		std::cout << "can not correctly handling" << std::endl;
 		exit(1);//exitするかは迷ったが正しくない結果を入れても仕方ない気がするので無しにします
 	}
-	this->value = nbr << this->fractionalBit;
+	this->_value = nbr << this->_fractionalBit;
 }
 
 Fixed::~Fixed()
@@ -41,10 +41,10 @@ Fixed::~Fixed()
 	std::cout << "delimiter called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &nbr):value(nbr.value)
+Fixed::Fixed(const Fixed &nbr):_value(nbr._value)
 {
 	std::cout << "copy constractor called" << std::endl;
-	setRawBits(nbr.value);
+	setRawBits(nbr._value);
 }
 
 Fixed& Fixed::operator=(const Fixed &nbr)
@@ -52,7 +52,7 @@ Fixed& Fixed::operator=(const Fixed &nbr)
 	std::cout << "copy asaiment operator called" << std::endl;
 	if (this == &nbr)
 		return (*this);
-	setRawBits(nbr.value);
+	setRawBits(nbr._value);
 	return (*this);
 }
 
@@ -65,21 +65,21 @@ std::ostream &operator<<(std::ostream &out, const Fixed &tgt)
 int	Fixed::getRawBits() const
 {
 	std::cout << "getRawBits function called" << std::endl;
-	return (this->value);
+	return (this->_value);
 }
 
 void	Fixed::setRawBits(const int nbr)
 {
 	std::cout << "setRawBits function called" << std::endl;
-	this->value = nbr;
+	this->_value = nbr;
 }
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->value / (float)(1 << this->fractionalBit));
+	return ((float)this->_value / (float)(1 << this->_fractionalBit));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (this->value / (1 << this->fractionalBit));
+	return (this->_value / (1 << this->_fractionalBit));
 }

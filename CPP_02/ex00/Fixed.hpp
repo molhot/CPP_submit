@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 22:39:26 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 23:22:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class	Fixed
 {
 	private:
-		int					value;
-		static	const	int	fractionalBit = 8;
+		int					_value;
+		static	const	int	_fractionalBit = 8;
 	
 	public:
 		Fixed();
