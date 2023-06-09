@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:41:16 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/08 00:14:34 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 22:39:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "Fixed.hpp"
 
 int	main( void ) {
-	FixNumber a;
-	FixNumber const b( 11111 ); 
-	FixNumber const c( 42.42f ); 
-	FixNumber const d( b );
+	Fixed a;
+	Fixed const b( 11111 ); 
+	Fixed const c( 42.42f ); 
+	Fixed const d( b );
 
-	a = FixNumber( 1234.4321f );
+	a = Fixed( 1234.4321f );
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

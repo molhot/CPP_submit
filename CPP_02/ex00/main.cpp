@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:41:16 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/04 15:36:45 by user             ###   ########.fr       */
+/*   Updated: 2023/06/09 22:39:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	main(void)
 {
-	FixNumber a;
-	FixNumber b(a);
-	FixNumber c;
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
 	c = b;
 	std::cout << a.getRawBits() << std::endl;
