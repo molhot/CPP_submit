@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 23:22:11 by user             ###   ########.fr       */
+/*   Updated: 2023/06/10 18:33:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ Fixed::Fixed(const float &nbr):_value(0)
 Fixed::Fixed(const int &nbr)
 {
 	std::cout << "Int constructor called" << std::endl;
-	if (nbr > 8388607 || nbr < -8388608)
-	{
-		std::cout << "can not correctly handling" << std::endl;
-		exit(1);//exitするかは迷ったが正しくない結果を入れても仕方ない気がするので無しにします
-	}
 	this->_value = nbr << this->_fractionalBit;
 }
 
