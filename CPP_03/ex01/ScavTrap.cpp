@@ -6,11 +6,16 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 05:00:43 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 21:52:13 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 01:24:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap():ClapTrap()
+{
+    std::cout << "SCAVTRAP constructor called :)" << std::endl;
+}
 
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
@@ -58,7 +63,14 @@ void    ScavTrap::attack(const std::string &target)
     }
 }
 
-void    ScavTrap::GuardGate()
+void    ScavTrap::guardGate()
 {
     std::cout << "guard gate is called!" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &out, const ScavTrap &tgt)
+{
+	out << tgt.obtain_name() << "'s hp is " << tgt.obtain_hp() << \
+    " and ep is " << tgt.obtain_ep() << " and attack is " << tgt.obtain_a() << std::endl;
+	return (out);	
 }

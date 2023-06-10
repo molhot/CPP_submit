@@ -6,12 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/10 11:22:07 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 00:56:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap():_name(""), _hp(0), _ep(0), _a(0)
+{
+    std::cout << "ClapTrap constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _a(0)
 {

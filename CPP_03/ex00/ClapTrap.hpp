@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 00:18:18 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 00:56:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap
         unsigned int      _a;
     
     public:
+        ClapTrap();
         ClapTrap(std::string name);
         ClapTrap(ClapTrap const &other);
         ClapTrap &operator=(ClapTrap const &other);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 11:08:03 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 01:14:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap
         unsigned int        _a;
     
     public:
+        ClapTrap();
         ClapTrap(std::string name);
         ClapTrap(ClapTrap const &other);
         ClapTrap &operator=(ClapTrap const &other);
@@ -31,6 +32,10 @@ class ClapTrap
         void    attack(const std::string& target);
         void    takeDamage(unsigned int amount);
         void    beRepaired(unsigned int amount);
+        std::string    obtain_name() const;
+        unsigned int    obtain_hp() const;
+        unsigned int    obtain_ep() const;
+        unsigned int    obtain_a() const;
 };
 
 #endif
