@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 11:11:13 by user             ###   ########.fr       */
+/*   Updated: 2023/06/10 11:36:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ int main()
     test_frag2.highFivesGuys();
 
     // test_scav2.GuardGate();
+    FragTrap nana(test_frag2);
+    nana.highFivesGuys();
+
     std::cout << std::endl;
 }
