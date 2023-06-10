@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 00:32:45 by user             ###   ########.fr       */
+/*   Updated: 2023/06/10 11:22:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
     if (this->_ep == 0)
         std::cout << this->_name << " no ep, so this machine can't move" << std::endl;
     else if (this->_hp == 0)
-        std::cout << this->_name << " no hp, so this machine can't removed" << std::endl;
+        std::cout << this->_name << " no hp, so this machine can't moved" << std::endl;
     else
     {
         std::cout << this->_name << " repaired" << amount << "hp!" << std::endl;
