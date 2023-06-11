@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:41:16 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/11 13:18:46 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 15:05:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main( void ) {
 	Fixed a;
 	Fixed const b( 2147.0f );
 	Fixed const g( 80000.0f );
+	Fixed const g_ex( 8388606.0f );
+	//8388607
 	Fixed const one( 1.0f ); 
 	Fixed const c( 10 ); 
 	Fixed const d( 10 );
@@ -66,6 +68,7 @@ int	main( void ) {
 	std::cout << "a*a test " << (a*a) << std::endl;// 1234 * 1234 = 1522756
 	std::cout << "a/a test " << (a/a) << std::endl;
 	std::cout << "g/one test " << (g/one) << std::endl;
+	std::cout << "g/one test " << (g_ex/one) << std::endl;
 	std::cout << " ~~ testend ~~ " << std::endl;
 	/*end*/
 	/*implementcheck*/

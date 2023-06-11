@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:53:28 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 00:12:06 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 21:36:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class FragTrap: public ClapTrap
     private:
         
     public:
+        FragTrap();
         FragTrap(std::string name);
         FragTrap(FragTrap const &other);
         FragTrap &operator=(FragTrap const &other);

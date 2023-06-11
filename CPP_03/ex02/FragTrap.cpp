@@ -6,11 +6,19 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:53:54 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:05:04 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 21:37:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap(): ClapTrap("")
+{
+    std::cout << "FlagTrap default Constructor called" << std::endl;
+    this->_hp = 100;
+    this->_ep = 100;
+    this->_a = 30;
+}
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
