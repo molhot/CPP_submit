@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:08 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/10 18:31:36 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 13:13:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Fixed::Fixed():_value(0)
 {
-	std::cout << "default constractor called" << std::endl;
+	// std::cout << "default constractor called" << std::endl; //testで見辛すぎるので一旦消します
 }
 
 Fixed::Fixed(const float &nbr):_value(0)
 {
-	std::cout << "Float construcor called" << std::endl;
+	// std::cout << "Float construcor called" << std::endl;
 	// std::cout << "this float is " << nbr << std::endl;
 	this->_value = roundf(nbr * (1 << this->_fractionalBit));
 	// std::cout << "input _value is " << this->_value << std::endl;
@@ -27,24 +27,24 @@ Fixed::Fixed(const float &nbr):_value(0)
 
 Fixed::Fixed(const int &nbr)
 {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	this->_value = nbr << this->_fractionalBit;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "delimiter called" << std::endl;
+	// std::cout << "delimiter called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &nbr):_value(nbr._value)
 {
-	std::cout << "copy constractor called" << std::endl;
+	// std::cout << "copy constractor called" << std::endl;
 	this->_value = nbr.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed &nbr)
 {
-	std::cout << "copy asaiment operator called" << std::endl;
+	// std::cout << "copy asaiment operator called" << std::endl;
 	if (this == &nbr)
 		return (*this);
 	this->_value = nbr.getRawBits();
@@ -61,27 +61,27 @@ bool			Fixed::operator<(Fixed const &nbr) const
 	return (this->getRawBits() < nbr.getRawBits());
 }
 
-bool			Fixed::operator>=(Fixed const &nbr)
+bool			Fixed::operator>=(Fixed const &nbr) const
 {
 	return (this->getRawBits() >= nbr.getRawBits());
 }
 
-bool			Fixed::operator<=(Fixed const &nbr)
+bool			Fixed::operator<=(Fixed const &nbr) const
 {
 	return (this->getRawBits() <= nbr.getRawBits());
 }
 
-bool			Fixed::operator==(Fixed const &nbr)
+bool			Fixed::operator==(Fixed const &nbr) const
 {
 	return (this->getRawBits() == nbr.getRawBits());
 }
 
-bool			Fixed::operator!=(Fixed const &nbr)
+bool			Fixed::operator!=(Fixed const &nbr) const
 {
 	return (this->getRawBits() != nbr.getRawBits());
 }
 
-Fixed	Fixed::operator+(Fixed const &nbr)
+Fixed	Fixed::operator+(Fixed const &nbr) const
 {
 	Fixed	val(*this);
 	
@@ -89,7 +89,7 @@ Fixed	Fixed::operator+(Fixed const &nbr)
 	return (val);
 }
 
-Fixed	Fixed::operator-(Fixed const &nbr)
+Fixed	Fixed::operator-(Fixed const &nbr) const
 {
 	Fixed	val(*this);
 	
@@ -97,7 +97,7 @@ Fixed	Fixed::operator-(Fixed const &nbr)
 	return (val);
 }
 
-Fixed	Fixed::operator*(Fixed const &nbr)
+Fixed	Fixed::operator*(Fixed const &nbr) const
 {
 	Fixed	val(*this);
 	long		tmp1;
@@ -109,7 +109,7 @@ Fixed	Fixed::operator*(Fixed const &nbr)
 	return (val);
 }
 
-Fixed	Fixed::operator/(Fixed const &nbr)
+Fixed	Fixed::operator/(Fixed const &nbr) const
 {
 	Fixed	val(*this);
 	long		tmp1;

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:09:05 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/06/09 23:22:11 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 13:14:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ class	Fixed
 		Fixed(const float &nbr);
 		Fixed(const int &nbr);
 		Fixed&			operator=(const Fixed &nbr);
-		Fixed			operator+(Fixed const &nbr);
-		Fixed			operator-(Fixed const &nbr);
-		Fixed			operator*(Fixed const &nbr);
-		Fixed			operator/(Fixed const &nbr);
+		Fixed			operator+(Fixed const &nbr) const;
+		Fixed			operator-(Fixed const &nbr) const;
+		Fixed			operator*(Fixed const &nbr) const;
+		Fixed			operator/(Fixed const &nbr) const;
 		Fixed			&operator++();
 		Fixed			operator++(int);
 		Fixed			&operator--();
@@ -41,10 +41,10 @@ class	Fixed
 		
 		bool				operator>(Fixed const &nbr) const;
 		bool				operator<(Fixed const &nbr) const;
-		bool				operator>=(Fixed const &nbr);
-		bool				operator<=(Fixed const &nbr);
-		bool				operator==(Fixed const &nbr);
-		bool				operator!=(Fixed const &nbr);
+		bool				operator>=(Fixed const &nbr) const;
+		bool				operator<=(Fixed const &nbr) const;
+		bool				operator==(Fixed const &nbr) const;
+		bool				operator!=(Fixed const &nbr) const;
 		int					getRawBits() const;
 		void				setRawBits(const int nbr);
 		float				toFloat(void) const;
