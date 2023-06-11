@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:51 by user              #+#    #+#             */
-/*   Updated: 2023/06/10 11:36:50 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 13:29:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
 
     //test originalfunc
     std::cout << std::endl;
-    test_scav1.GuardGate();
+    test_scav1.guardGate();
     //test_clap1.GuardGate(); this must not work because clapbox does not have this funcl
     std::cout << std::endl;
     test_frag1.highFivesGuys();
@@ -39,7 +39,7 @@ int main()
     std::cout << std::endl;
     ScavTrap test_scav2(test_scav1);
     //test_scav2 = test_scav1;
-    test_scav2.GuardGate();
+    test_scav2.guardGate();
     std::cout << std::endl;
 
     std::cout << std::endl;

@@ -6,11 +6,16 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:17:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 00:47:34 by user             ###   ########.fr       */
+/*   Updated: 2023/06/11 13:27:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap():_name(""), _hp(0), _ep(0), _a(0)
+{
+    std::cout << "ClapTrap constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _a(0)
 {
@@ -60,7 +65,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
         std::cout << this->_name << " no hp, so this machine can't dameged more than now" << std::endl;
     else
     {
-        std::cout << this->_name << " attacked " << amount << "damage" << std::endl;
+        std::cout << this->_name << " attacked " << amount << " damage" << std::endl;
         tmp_hp = this->_hp;
         this->_hp = this->_hp - amount;
         if (tmp_hp < this->_hp)
@@ -79,7 +84,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
         std::cout << this->_name << " no hp, so this machine can't removed" << std::endl;
     else
     {
-        std::cout << this->_name << " repaired" << amount << "hp!" << std::endl;
+        std::cout << this->_name << " repaired " << amount << " hp!" << std::endl;
         this->_ep = this->_ep - 1;
         tmp_hp = this->_hp;
         this->_hp = this->_hp + amount;
@@ -92,3 +97,22 @@ void    ClapTrap::beRepaired(unsigned int amount)
     }
 }
 
+std::string    ClapTrap::obtain_name() const
+{
+    return (this->_name);
+}
+
+unsigned int    ClapTrap::obtain_hp() const
+{
+    return (this->_hp);
+}
+
+unsigned int    ClapTrap::obtain_ep() const
+{
+    return (this->_ep);
+}
+
+unsigned int    ClapTrap::obtain_a() const
+{
+    return (this->_a);
+}
