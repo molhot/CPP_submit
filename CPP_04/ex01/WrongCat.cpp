@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:15 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 00:10:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ WrongCat::WrongCat(WrongCat const &sub)
 WrongCat& WrongCat::operator=(WrongCat const &sub)
 {
     std::cout << "WrongCat operator called" << std::endl;
+    if (this == &sub)
+        return (*this);
     this->set_Type(sub.get_Type());
     return (*this);
 }

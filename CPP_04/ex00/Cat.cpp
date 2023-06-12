@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:22:35 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/12 23:59:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ Cat::Cat(Cat const &sub): Animal(sub._type)
 Cat& Cat::operator=(Cat const &sub)
 {
     std::cout << "Cat operator called" << std::endl;
+    if (this == &sub)
+        return (*this);
     this->_type = sub._type;
     return (*this);
 }

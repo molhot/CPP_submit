@@ -6,15 +6,16 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:31 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 01:18:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog")
+Dog::Dog()
 {
     std::cout << "Dog constructor called" << std::endl;
+    this->_type = "Dog";
     this->_brain = new Brain();
     if (this->_brain == NULL)
     {
@@ -23,14 +24,18 @@ Dog::Dog(): Animal("Dog")
     }
 }
 
-Dog::Dog(Dog const &sub): Animal(sub._type)
+Dog::Dog(Dog const &sub)
 {
     std::cout << "Dog COPY_constructor called" << std::endl;
+    this->_type = sub.getType();
+    this->_brain = new Brain(*(sub._brain));
 }
 
 Dog& Dog::operator=(Dog const &sub)
 {
     std::cout << "Dog operator called" << std::endl;
+    if (this == &sub)
+        return (*this);
     this->_type = sub._type;
     this->_brain = new Brain();
     if (this->_brain == NULL)

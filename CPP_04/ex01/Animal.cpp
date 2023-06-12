@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:18:49 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 00:07:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Animal::Animal(Animal const &sub): _type(sub._type)
 Animal& Animal::operator=(Animal const &sub)
 {
     std::cout << "Animal operator called" << std::endl;
+    if (this == &sub)
+        return (*this);
     this->_type = sub._type;
     return (*this);
 }

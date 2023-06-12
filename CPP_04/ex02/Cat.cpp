@@ -6,15 +6,16 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:22:35 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 01:09:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat(void)
 {
     std::cout << "Cat constructor called" << std::endl;
+    this->_type = "Cat";
     this->_brain = new Brain();
     if (this->_brain == NULL)
     {
@@ -29,9 +30,12 @@ Cat::~Cat()
     delete(this->_brain);
 }
 
-Cat::Cat(Cat const &sub): Animal(sub._type)
+Cat::Cat(Cat const &sub)
 {
     std::cout << "Cat COPY_constructor called" << std::endl;
+    this->_type = sub.getType();
+    this->_brain = new Brain(*(sub._brain));
+    
 }
 
 Cat& Cat::operator=(Cat const &sub)
@@ -48,9 +52,9 @@ Cat& Cat::operator=(Cat const &sub)
         exit (1);
     }
     //error
-    this->_brain = sub._brain;
+    //this->_brain = sub._brain;
     //not error
-    //*this->_brain = *sub._brain;
+    *this->_brain = *sub._brain;
     return (*this);
 }
 

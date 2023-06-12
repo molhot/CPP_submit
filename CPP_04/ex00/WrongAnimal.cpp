@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:46:08 by user              #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 00:00:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ WrongAnimal::WrongAnimal(WrongAnimal const &sub): _type(sub._type)
 WrongAnimal& WrongAnimal::operator=(WrongAnimal const &sub)
 {
     std::cout << "WrongAnimal operator called" << std::endl;
+    if (this == &sub)
+        return (*this);
     this->_type = sub._type;
     return (*this);
 }
