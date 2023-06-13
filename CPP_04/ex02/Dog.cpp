@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 23:46:31 by user              #+#    #+#             */
-/*   Updated: 2023/06/13 01:18:42 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 21:44:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,10 @@ Dog& Dog::operator=(Dog const &sub)
     std::cout << "Dog operator called" << std::endl;
     if (this == &sub)
         return (*this);
+    delete(this->_brain);
     this->_type = sub._type;
-    this->_brain = new Brain();
-    if (this->_brain == NULL)
-    {
-        std::cout << "new is missed" << std::endl;
-        exit (1);
-    }
-    this->_brain = sub._brain;
+    this->_brain = new Brain(*(sub._brain));
+    //this->_brain = sub._brain;
     return (*this);
 }
 
@@ -65,7 +61,7 @@ void    Dog::getIdea() const
     pos = 0;
     while (pos != 100)
     {
-        std::cout << "Cat Idea " <<  pos + 1 << " is " << this->_brain->get_idea(pos) << std::endl;
+        std::cout << "Dog Idea " <<  pos + 1 << " is " << this->_brain->get_idea(pos) << std::endl;
         pos++;
     }
 }

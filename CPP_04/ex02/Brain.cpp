@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:15:37 by user              #+#    #+#             */
-/*   Updated: 2023/05/05 18:24:42 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 12:46:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Brain::Brain(Brain const &other_brain)
 
     std::cout << "Brain copyconstructor called" << std::endl;
     length = 0;
+    this->_ideas = new std::string[100];
     while (length != 100)
     {
         this->_ideas[length] = other_brain._ideas[length];

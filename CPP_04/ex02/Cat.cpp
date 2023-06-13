@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:22:35 by user              #+#    #+#             */
-/*   Updated: 2023/06/13 01:09:22 by user             ###   ########.fr       */
+/*   Updated: 2023/06/13 21:27:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,14 @@ Cat& Cat::operator=(Cat const &sub)
     std::cout << "Cat operator called" << std::endl;
     if (this == &sub)
         return (*this);
-    
+    delete(this->_brain);
     this->_type = sub._type;
-    this->_brain = new Brain();
+    this->_brain = new Brain(*(sub._brain));
     if (this->_brain == NULL)
     {
         std::cout << "new is missed" << std::endl;
         exit (1);
     }
-    //error
-    //this->_brain = sub._brain;
-    //not error
-    *this->_brain = *sub._brain;
     return (*this);
 }
 
