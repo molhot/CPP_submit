@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 00:14:04 by user              #+#    #+#             */
-/*   Updated: 2023/06/09 12:10:04 by user             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:03:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ int error_new(size_t pos, Animal **anim)
 
 int main()
 {
+    //Animal some; Animal is Abstractclass so you can not make this instance
     Animal *anim[10];
     size_t  pos;
     size_t  idea_pos;
 
+    std::cout << "prev test" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
     pos = 0;
     while (pos != 10)
     {
         if (pos % 2  == 1)
         {
             anim[pos] = new Cat();
-            if (anim[pos] == NULL)
-                return (error_new(pos, anim));
             std::cout << anim[pos]->getType() << std::endl;
-            //あくまでこれはAnimalの配列のため、ただAnimalを継承しているためこんな書き方ができる
             //if you don't use dynamic cast, can not access to setIdea and getIdea
             //dynamic_cast<Cat *>(anim[pos])->setIdea(0, "brabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabrabra");
             if (anim[pos] == NULL)
@@ -54,8 +54,21 @@ int main()
         }
         pos++;
     }
-    //dynamic_cast<Cat *>(anim[1])->getIdea();
 
+    pos = 0;
+    while (pos != 10)
+    {
+        //if you don't use virtual class, will call only animal deconstructor...
+        delete anim[pos];
+        pos++;
+    }
+    std::cout << std::endl;
+    
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "cat test" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    //prev fub check//
+    
     Cat *cat = new Cat();
     idea_pos = 0;
     while (idea_pos != 100)
@@ -65,16 +78,69 @@ int main()
     }
     cat->getIdea();
 
-    pos = 0;
-    while (pos != 10)
-    {
-        //if you don't use virtual class, will call only animal deconstructor...
-        delete anim[pos];
-        std::cout << "~~" << std::endl;
-        pos++;
-    }
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "cat2 test" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    Cat cat2(*cat);
+    cat2.getIdea();
 
+
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "cat3 test" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    Cat cat3;
+    cat3 = cat2;
+    cat3.getIdea();
+
+
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "cat4 test" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    Cat *cat4 = new Cat();
+    *cat4 = cat3;
+    cat4->getIdea();
+
+    delete cat4;
     delete cat;
-    
+
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "dog testing" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+
+    Dog *dd = new Dog();
+    idea_pos = 0;
+    while (idea_pos != 100)
+    {
+        dd->setIdea(idea_pos, "chu-ru!!");
+        idea_pos++;
+    }
+    Dog ee(*dd);
+    ee.getIdea();
+
+    Dog *kk = new Dog();
+    idea_pos = 0;
+    while (idea_pos != 100)
+    {
+        kk->setIdea(idea_pos, "BSDKJHKWD!!");
+        idea_pos++;
+    }
+    ee = *kk;
+    ee.getIdea();
+
+    delete dd;
+    delete kk;
+
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+    std::cout << "can instance check（ex01 still can）" << std::endl;
+    std::cout << "-----------------//\\\\//\\\\//\\\\//\\\\//\\\\//\\\\-----------------" << std::endl;
+
+    Animal anim2;
+    Animal anim3("nanka");
+    anim2 = anim3;
+    Animal anim4(anim3);
+
+    anim2.makeSound();
+    anim3.makeSound();
+
     system("leaks -q ex01");
 }

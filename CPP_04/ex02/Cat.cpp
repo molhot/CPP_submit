@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:22:35 by user              #+#    #+#             */
-/*   Updated: 2023/06/13 21:27:22 by user             ###   ########.fr       */
+/*   Updated: 2023/06/14 14:22:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ Cat::Cat(Cat const &sub)
     std::cout << "Cat COPY_constructor called" << std::endl;
     this->_type = sub.getType();
     this->_brain = new Brain(*(sub._brain));
-    
 }
 
 Cat& Cat::operator=(Cat const &sub)
