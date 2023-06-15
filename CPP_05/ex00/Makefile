@@ -1,6 +1,6 @@
 NAME = ex00
 CXX = c++ -std=c++98
-SRCS = main.cpp Breaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror
 

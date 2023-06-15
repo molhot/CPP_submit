@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:37:50 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 23:03:54 by user             ###   ########.fr       */
+/*   Updated: 2023/06/15 17:50:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Bureaucrat::Bureaucrat(): _name("no_name"), _grade(150)
 {
-	std::cout << "Breaucrat with no argment constructor called" << std::endl;
+	std::cout << "Bureaucrat with no argment constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(150)
 {
-	std::cout << "Breaucrat with argment constructor called" << std::endl;
+	std::cout << "Bureaucrat with argment constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
-	std::cout << "Breaucrat constructor called" << std::endl;
+	std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
 	{
 		std::cout << "constructor error (too high)" << std::endl;
@@ -40,12 +40,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Breaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &sub): _name(sub._name), _grade(sub._grade)
 {
-	std::cout << "Breaucrat copy constructor called" << std::endl;
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &sub)
@@ -124,7 +124,7 @@ Bureaucrat::GradeTooHighException::GradeTooHighException()
 	std::cout << "GradeTooHighException constructor called" << std::endl;
 }
 
-// Breaucrat::GradeTooHighException::~GradeTooHighException()
+// Bureaucrat::GradeTooHighException::~GradeTooHighException()
 // {
 // 	std::cout << "GradeTooHighException destructor called" << std::endl;
 // }
@@ -141,7 +141,7 @@ Bureaucrat::GradeTooLowException::GradeTooLowException()
 	std::cout << "GradeTooLowException constructor called" << std::endl;
 }
 
-// Breaucrat::GradeTooLowException::~GradeTooLowException()
+// Bureaucrat::GradeTooLowException::~GradeTooLowException()
 // {
 // 	std::cout << "GradeTooLowException destructor called" << std::endl;
 // }

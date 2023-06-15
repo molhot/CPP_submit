@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 15:37:50 by user              #+#    #+#             */
-/*   Updated: 2023/06/15 17:50:52 by user             ###   ########.fr       */
+/*   Created: 2023/05/05 22:45:08 by user              #+#    #+#             */
+/*   Updated: 2023/05/07 20:26:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-Bureaucrat::Bureaucrat(): _name("no_name"), _grade(150)
+Bureaucrat::Bureaucrat(): _name("test user"), _grade(15)
 {
 	std::cout << "Bureaucrat with no argment constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(150)
+Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(15)
 {
 	std::cout << "Bureaucrat with argment constructor called" << std::endl;
 }
@@ -26,15 +27,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
-	{
-		std::cout << "constructor error (too high)" << std::endl;
-		exit(1);
-	}
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-	{
-		std::cout << "constructor error (too low)" << std::endl;
-		exit(1);
-	}
+		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 }
 
@@ -78,11 +73,15 @@ void	Bureaucrat::increaseGrade()
 
 void	Bureaucrat::increaseGrade(int grade)
 {
-	if (this->_grade - grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
-	if (this->_grade - grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
-	this->_grade = this->_grade - grade;
+	while (grade != 0)
+	{
+		this->_grade = this->_grade - 1;
+		grade = grade - 1;
+		if (this->_grade < 1)
+			throw (Bureaucrat::GradeTooHighException());
+		if (this->_grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
+	}
 }
 
 void	Bureaucrat::decreaseGrade()
@@ -96,28 +95,18 @@ void	Bureaucrat::decreaseGrade()
 
 void	Bureaucrat::decreaseGrade(int grade)
 {
-	if (this->_grade + grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
-	if (this->_grade + grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
-	this->_grade = this->_grade + grade;
+	while (grade != 0)
+	{
+		this->_grade = this->_grade + 1;
+		grade = grade - 1;
+		if (this->_grade < 1)
+			throw (Bureaucrat::GradeTooHighException());
+		if (this->_grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
+	}
 }
 
 //High error crass
-
-void	Bureaucrat::executeForm(Form const &sub)
-{
-	try
-	{
-		sub.execute(*this);
-		std::cout << *this << " executed" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << *this << " cannnot executed" << std::endl;
-	}
-	
-}
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
@@ -157,4 +146,24 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt)
 {
 	out << tgt.getName() << ", bureaucrat grade " << tgt.getGrade();
 	return (out);	
+}
+
+void		Bureaucrat::signForm(Form &tgt)
+{
+	try
+	{
+		tgt.beSigned(*this);
+		std::cout << "================================" << std::endl;
+		std::cout << " << " << tgt.get_name() << " is signed by " << this->getName() << " >> " << std::endl;
+		std::cout << "================================" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "===================================" << std::endl;
+		std::cout << " << " << tgt.get_name() << " is NOT signed by " << this->getName() << " >> " << std::endl;
+		std::cout << "===================================" << std::endl;
+		std::cout << "| reason -> " << e.what() << " |" << std::endl;
+		std::cout << "=========check=========" << std::endl;
+	}
+	
 }

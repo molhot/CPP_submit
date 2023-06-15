@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Breaucrat.hpp                                      :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:45:11 by user              #+#    #+#             */
-/*   Updated: 2023/05/06 14:42:02 by user             ###   ########.fr       */
+/*   Updated: 2023/05/06 11:51:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Breaucrat_HPP
-#define Breaucrat_HPP
+#ifndef Bureaucrat_HPP
+#define Bureaucrat_HPP
 
 #include <iostream>
 
-class Breaucrat
+//grade は 1の方が高い気をつける
+
+class Bureaucrat
 {
 	private:
 		std::string	_name;
 		int			_grade;
 
 	public:
-		Breaucrat();
-		Breaucrat(std::string name);
-		Breaucrat(std::string name, int grade);
-		~Breaucrat();
-		Breaucrat(Breaucrat const &sub);
-		Breaucrat &operator=(Breaucrat const &sub);
+		Bureaucrat();
+		Bureaucrat(std::string name);
+		Bureaucrat(std::string name, int grade);
+		~Bureaucrat();
+		Bureaucrat(Bureaucrat const &sub);
+		Bureaucrat &operator=(Bureaucrat const &sub);
 		std::string	getName();
-		int			getGrade() const;
+		int			getGrade();
 		void		increaseGrade();
 		void		increaseGrade(int grade);
 		void		decreaseGrade();
@@ -53,6 +55,6 @@ class Breaucrat
 	};
 };
 
-std::ostream &operator<<(std::ostream &out, Breaucrat &tgt);
+std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt);
 
 #endif
