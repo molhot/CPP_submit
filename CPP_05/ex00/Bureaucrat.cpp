@@ -26,15 +26,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
-	{
-		std::cout << "constructor error (too high)" << std::endl;
-		exit(1);
-	}
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-	{
-		std::cout << "constructor error (too low)" << std::endl;
-		exit(1);
-	}
+		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 }
 
@@ -78,11 +72,15 @@ void	Bureaucrat::increaseGrade()
 
 void	Bureaucrat::increaseGrade(int grade)
 {
-	if (this->_grade - grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
-	if (this->_grade - grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
-	this->_grade = this->_grade - grade;
+	while (grade != 0)
+	{
+		this->_grade = this->_grade - 1;
+		grade = grade - 1;
+		if (this->_grade < 1)
+			throw (Bureaucrat::GradeTooHighException());
+		if (this->_grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
+	}
 }
 
 void	Bureaucrat::decreaseGrade()
@@ -96,11 +94,15 @@ void	Bureaucrat::decreaseGrade()
 
 void	Bureaucrat::decreaseGrade(int grade)
 {
-	if (this->_grade + grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
-	if (this->_grade + grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
-	this->_grade = this->_grade + grade;
+	while (grade != 0)
+	{
+		this->_grade = this->_grade + 1;
+		grade = grade - 1;
+		if (this->_grade < 1)
+			throw (Bureaucrat::GradeTooHighException());
+		if (this->_grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
+	}
 }
 
 //High error crass
@@ -141,6 +143,19 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt)
 {
-	out << tgt.getName() << ", bureaucrat grade " << tgt.getGrade();
+	std::string line = "-";
+
+	while (true)
+	{
+		if (line.length() == tgt.getName().length() + 8)
+			break;
+		line = line + "-";
+	}
+	line = line + '\n';
+	out << line;
+	out << "|   " + tgt.getName() + "   |\n";
+	out << line;
+	out << ">>   grade  " << tgt.getGrade() << "   <<\n";
+	out << line;
 	return (out);	
 }

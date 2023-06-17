@@ -35,24 +35,24 @@ class Bureaucrat
 		void		increaseGrade();
 		void		increaseGrade(int grade);
 		void		decreaseGrade();
-		void		decreaseGrade(int grade);
+		void		decreaseGrade(int grade);	
 
-	class GradeTooHighException: public std::exception
-	{
-		public:
-			GradeTooHighException();
-			//~GradeTooHighException();
-			virtual const char* what() const throw();//not recommend?
-			//virtual const char* what() const noexcept; over C++11 version
-	};
-	class GradeTooLowException: public std::exception
-	{
-		public:
-			GradeTooLowException();
-			//~GradeTooLowException();
-			virtual const char* what() const throw();//not recommend?
-			//virtual const char* what() const noexcept; over C++11 version
-	};
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				GradeTooHighException();
+				//~GradeTooHighException();
+				virtual const char* what() const throw();//not recommend?
+				//virtual const char* what() const noexcept; over C++11 version
+		};
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				GradeTooLowException();
+				//~GradeTooLowException();
+				virtual const char* what() const throw();//not recommend?
+				//virtual const char* what() const noexcept; over C++11 version
+		};
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt);

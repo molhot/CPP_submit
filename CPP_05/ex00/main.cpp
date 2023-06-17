@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:40:12 by user              #+#    #+#             */
-/*   Updated: 2023/06/15 18:49:22 by user             ###   ########.fr       */
+/*   Updated: 2023/06/17 16:59:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
     //temp check//
-    Bureaucrat b("jaeskim", 11);
+    Bureaucrat b("jaesnlsjdlojadkim", 11);
 	std::cout << b << std::endl;
 	std::cout << std::endl;
 	std::cout << "///////// increase test \\\\\\\\\\\\\\\\" << std::endl;
@@ -51,6 +51,36 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
+
+    std::cout << std::endl;
+    std::cout << "///////// incorrect implement test \\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << std::endl;
+
+    //over 150 implement
+    try
+    {
+        Bureaucrat missed("jaesnlsjdlojadkim", 152);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    std::cout << std::endl;
+
+    //missed.decreaseGrade(); // this is not available because missed implement
+
+    //over 1 implement
+    try
+    {
+        Bureaucrat missed("jaesnlsjdlojadkim", 0);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    std::cout << std::endl;
 
     return 0;
 }
