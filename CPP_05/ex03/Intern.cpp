@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 10:58:03 by user              #+#    #+#             */
-/*   Updated: 2023/05/10 19:12:24 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:11:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ Intern::~Intern()
 Intern::Intern(Intern const &sub)
 {
 	std::cout << "Intern Copy constructor called" << std::endl;
+	*this = sub;
 }
 
 Intern& Intern::operator=(Intern const &sub)
 {
 	std::cout << "Intern Operator constructor called" << std::endl;
+	if (this == &sub)
+		return (*this);
 	return (*this);
 }
 
