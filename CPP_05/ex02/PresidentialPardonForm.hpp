@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:38:57 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 23:24:18 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 20:52:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-class PresidentialPardonForm: public Form
+class PresidentialPardonForm: public AForm
 {
 	private:
 

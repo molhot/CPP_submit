@@ -6,42 +6,19 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:37:12 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 23:08:31 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 20:43:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(std::string name, std::string target, int sign, int execute): _name(name), _target(target), _grade4sign(sign), _grade4execute(execute), _signed(false)
-{
-	std::cout << "Form constructor called" << std::endl;
-}
-
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Form destructor called" << std::endl;
 }
 
-Form::Form(Form const &sub): _name(sub._name), _target(sub._target), _grade4sign(sub._grade4sign), _grade4execute(sub._grade4execute), _signed(sub._signed)
-{
-	std::cout << "Form Copy constructor called" << std::endl;
-}
-
-Form& Form::operator=(Form const &sub)
-{
-	std::cout << "Form operand called" << std::endl;
-	if (this == &sub)
-		return (*this);
-	this->_target = sub._target;
-	this->_name = sub._name;
-	this->_grade4sign = sub._grade4sign;
-	this->_grade4execute = sub._grade4execute;
-	this->_signed = sub._signed;
-	return (*this);
-}
-
-void	Form::beSigned(Bureaucrat const &sub)
+void	AForm::beSigned(Bureaucrat const &sub)
 {
 	if (sub.getGrade() <= this->_grade4sign)
 	{
@@ -55,55 +32,55 @@ void	Form::beSigned(Bureaucrat const &sub)
 	}
 }
 
-bool	Form::get_Signstatus() const
+bool	AForm::get_Signstatus() const
 {
 	return (this->_signed);
 }
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return (this->_name);
 }
 
-std::string	Form::getTarget() const
+std::string	AForm::getTarget() const
 {
 	return (this->_target);
 }
 
-int	Form::get_Grade4Sign() const
+int	AForm::get_Grade4Sign() const
 {
 	return (this->_grade4sign);
 }
 
-int Form::get_Grade4excete() const
+int AForm::get_Grade4excete() const
 {
 	return (this->_grade4execute);
 }
 
-Form::NotSigned::NotSigned()
+AForm::NotSigned::NotSigned()
 {
 	std::cout << "NotSigned constructor called" << std::endl;
 }
 
-const char* Form::NotSigned::what() const throw()
+const char* AForm::NotSigned::what() const throw()
 {
 	return ("Not Signed");
 }
 
-Form::GradeTooLowException::GradeTooLowException()
+AForm::GradeTooLowException::GradeTooLowException()
 {
 	std::cout << "GradeTooLowException constructor called" << std::endl;
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Too Low Grade");
 }
 
-void	Form::execute(Bureaucrat const &sub) const
+void	AForm::execute(Bureaucrat const &sub) const
 {
 	if (this->get_Signstatus() == false)
-		throw (Form::NotSigned());
+		throw (AForm::NotSigned());
 	if (sub.getGrade() > this->get_Grade4excete())
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 }

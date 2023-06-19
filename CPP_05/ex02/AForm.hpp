@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:37:22 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 23:01:14 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 20:39:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
-	private:
+	protected:
 		std::string _name;
 		std::string	_target;
 		bool		_signed;
@@ -27,17 +27,17 @@ class Form
 		int			_grade4execute;
 
 	public:
-		Form(std::string name, std::string target, int sign_grade, int execute_grade);
-		~Form();
-		Form(Form const &sub);
-		Form& operator=(Form const &sub);
+		//Form(std::string name, std::string target, int sign_grade, int execute_grade);
+		virtual ~AForm();
+		//Form(Form const &sub);
+		//Form& operator=(Form const &sub);
 		void			beSigned(Bureaucrat const &sub);
 		bool			get_Signstatus() const;
 		std::string		getName() const;
 		std::string		getTarget() const;
 		int				get_Grade4Sign() const;
 		int				get_Grade4excete() const;
-		virtual	void			execute(Bureaucrat const &sub) const;
+		virtual	void			execute(Bureaucrat const &sub) const = 0;
 		class	NotSigned: public std::exception
 		{
 			public:

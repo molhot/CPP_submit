@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:41:10 by user              #+#    #+#             */
-/*   Updated: 2023/05/07 23:11:33 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 20:54:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
       |  e  |     	  \n\
 "
 
-class ShrubberyCreationForm: public Form
+class ShrubberyCreationForm: public AForm
 {
 	private:
 		

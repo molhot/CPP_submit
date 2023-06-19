@@ -155,7 +155,15 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt)
 	out << line;
 	out << "|   " + tgt.getName() + "   |\n";
 	out << line;
-	out << ">>   grade  " << tgt.getGrade() << "   <<\n";
+
+	std::string	emp = " ";
+	while (true)
+	{
+		if (line.length() == (std::to_string(tgt.getGrade()).length() + 18) / 2)
+			break;
+		line = line + " ";
+	}
+	out << ">>   grade  " << emp << tgt.getGrade() << emp << "   <<\n";
 	out << line;
 	return (out);	
 }
