@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:38:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:54:47 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:30:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
 {
 	std::cout << "President constructor called" << std::endl;
-	this->_name = "Shruberry";
+	this->_name = "President";
 	this->_target = target;
 	this->_signed = false;
 	this->_grade4sign = 25;

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:45:36 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 21:06:11 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:28:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ int main()
 	rrf = someRandomIntern.makeForm("NoForm", "Bender");
 	if (rrf != NULL)
 		std::cout << rrf->getName() << std::endl;
+
+	Form*	pre;
+	pre = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+	if (pre != NULL)
+		std::cout << pre->getName() << std::endl;
 }
