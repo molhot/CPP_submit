@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:38:00 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:47:51 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:05:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Bureaucrat
 		void		increaseGrade(int grade);
 		void		decreaseGrade();
 		void		decreaseGrade(int grade);
-		void		executeForm(AForm const &form);
+		void		executeForm(Form const &form);
 
 	class GradeTooHighException: public std::exception
 	{

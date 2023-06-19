@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:37:50 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:48:12 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:05:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	Bureaucrat::decreaseGrade(int grade)
 
 //High error crass
 
-void	Bureaucrat::executeForm(AForm const &sub)
+void	Bureaucrat::executeForm(Form const &sub)
 {
 	size_t len = this->getName().length() + sub.getName().length() + 19;
 	std::string line = "-";

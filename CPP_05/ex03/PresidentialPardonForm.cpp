@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:38:44 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:49:10 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:06:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 void	PresidentialPardonForm::execute(Bureaucrat const &sub) const
 {
 	if (this->get_Signstatus() == false)
-		throw (AForm::NotSigned());
+		throw (Form::NotSigned());
 	if (sub.getGrade() > this->get_Grade4excete())
-		throw (AForm::GradeTooLowException());
+		throw (Form::GradeTooLowException());
 	std::cout << this->getName() << "has been pardoned by Zaphod" << std::endl;
 }

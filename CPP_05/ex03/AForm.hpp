@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:37:22 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:46:25 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:03:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
 	protected:
 		std::string _name;
@@ -28,7 +28,7 @@ class AForm
 
 	public:
 		//Form(std::string name, std::string target, int sign_grade, int execute_grade);
-		virtual ~AForm();
+		virtual ~Form();
 		//Form(Form const &sub);
 		//Form& operator=(Form const &sub);
 		void			beSigned(Bureaucrat const &sub);

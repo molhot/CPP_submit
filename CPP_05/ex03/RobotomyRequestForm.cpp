@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:39:26 by user              #+#    #+#             */
-/*   Updated: 2023/06/19 20:50:10 by user             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:08:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const &s
 void	RobotomyRequestForm::execute(Bureaucrat const &sub) const
 {
 	if (this->get_Signstatus() == false)
-		throw (AForm::NotSigned());
+		throw (Form::NotSigned());
 	if (sub.getGrade() > this->get_Grade4excete())
-		throw (AForm::GradeTooLowException());
+		throw (Form::GradeTooLowException());
 	std::cout << "\a";
 	if (std::rand() % 2 == 0)
 		std::cout << "I a...m... rob...o...." << std::endl;
