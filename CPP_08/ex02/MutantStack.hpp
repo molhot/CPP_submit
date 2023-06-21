@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 07:38:55 by user              #+#    #+#             */
-/*   Updated: 2023/05/11 08:43:14 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 21:44:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class MutantStack: public std::stack<T>
 	private:
 
 	public:
-		typedef	std::stack<T> mutantstack;//this is variable name so typedef only is ol
+		typedef	std::stack<T> mutantstack;
 		typedef typename mutantstack::container_type::iterator iterator;
-		 
+		
 		MutantStack(): mutantstack()
 		{
 			std::cout << "Mutant stack constructor called" << std::endl;
@@ -41,8 +41,7 @@ class MutantStack: public std::stack<T>
 		{
 			if (this == &sub)
 				return (*this);
-			if (*this != sub)
-				*this = sub;
+			this->c = sub.c;
 			return (*this);
 		}
 		iterator begin()
