@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 20:21:04 by user              #+#    #+#             */
-/*   Updated: 2023/05/08 20:39:25 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 #include <iostream>
 
@@ -40,3 +43,5 @@ Temp	max(Temp &sub, Temp &heb)
 		return (sub);
 	return (heb);
 }
+
+#endif

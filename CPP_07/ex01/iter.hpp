@@ -6,9 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 20:51:54 by user              #+#    #+#             */
-/*   Updated: 2023/05/08 21:29:43 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ITER_HPP
+#define ITER_HPP
 
 #include <iostream>
 
@@ -32,3 +35,5 @@ void	print(Tem &nanka)
 {
 	std::cout << nanka << std::endl;
 }
+
+#endif
