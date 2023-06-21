@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 09:40:10 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 12:02:25 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 12:52:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ScalarConverter::float_showswitch(float _float)
 	if (_float - static_cast<int>(_float) == 0)
 		std::cout << _float << ".0f";
 	else
-		std::cout << _float << "f";
+		std::cout << std::to_string(_float) << "f";
 	std::cout << std::endl;
 }
 
@@ -78,7 +78,7 @@ void	ScalarConverter::double_showswitch(double _double)
 	if (_double - static_cast<int>(_double) == 0)
 		std::cout << _double << ".0";
 	else
-		std::cout << _double;
+		std::cout << std::to_string(_double);
 	std::cout << std::endl;
 }
 
