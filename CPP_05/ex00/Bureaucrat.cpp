@@ -44,19 +44,20 @@ Bureaucrat::Bureaucrat(Bureaucrat const &sub): _name(sub._name), _grade(sub._gra
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &sub)
 {
+	std::cout << "Bureaucrat copy assignmemnt called" << std::endl;
 	if (this == &sub)
 		return (*this);
-	this->_name = sub._name;
-	this->_grade = sub._grade;
+	this->_name = sub.getName();
+	this->_grade = sub.getGrade();
 	return (*this);
 }
 
-std::string	Bureaucrat::getName()
+std::string	Bureaucrat::getName() const
 {
 	return (this->_name);
 }
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
@@ -159,9 +160,9 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat &tgt)
 	std::string	emp = " ";
 	while (true)
 	{
-		if (line.length() == (std::to_string(tgt.getGrade()).length() + 18) / 2)
+		if (emp.length() >= ((line.length() - 18) / 2))
 			break;
-		line = line + " ";
+		emp = emp + " ";
 	}
 	out << ">>   grade  " << emp << tgt.getGrade() << emp << "   <<\n";
 	out << line;
