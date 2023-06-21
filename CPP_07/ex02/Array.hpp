@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 21:46:34 by user              #+#    #+#             */
-/*   Updated: 2023/05/10 23:12:23 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 17:21:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define Array_HPP
 
 #include <iostream>
+
+//Tip: Try to compile int * a = new int(); then display *a.とは？？
+//newで確保したものに中身なんかないのでは
+//なぜかArray.cppを許可されていないため実装自体ここに書く必要があると感じている
 
 template <class T>
 
@@ -29,7 +33,7 @@ class	Array
 			std::cout << "Array constructor called" << std::endl;
 			//this->_array = new T[0];
 		};
-		Array(unsigned int n): _size(n), _array(new T[n])
+		Array(unsigned int n): _array(new T[n]), _size(n)
 		{
 			std::cout << "Array constructor called" << std::endl;
 			//this->_array = new T[0];
@@ -51,8 +55,8 @@ class	Array
 			{
 				pos = 0;
 				this->_size = sub._size;
-				this->_array = new T[sub.size];
-				while (pos != this->_array)
+				this->_array = new T[sub._size];
+				while (pos != this->_size)
 				{
 					this->_array[pos] = sub._array[pos];
 					pos++;
