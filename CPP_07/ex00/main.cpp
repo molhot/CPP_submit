@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 20:35:14 by user              #+#    #+#             */
-/*   Updated: 2023/05/08 20:47:19 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 15:43:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
 	std::cout << "min test is " << min(a, b) << std::endl;
 
 	//writingtest
-	::swap(a, b);
+	::swap(a, b);//こんな書き方もあるらしい
 	std::cout << "a is " << a << " and b is " << b << std::endl;
 
 	//change type
@@ -31,4 +31,7 @@ int main()
 	swap(nanka, nanka_big);
 	std::cout << "nanka is " << nanka << " and NANKA is " << nanka_big << std::endl;
 	std::cout << "max test is " << min(nanka, nanka_big) << std::endl;
+
+	//this can not handled
+	//swap(a, nanka);
 }
