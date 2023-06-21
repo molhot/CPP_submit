@@ -1,6 +1,6 @@
 NAME = ex00
 CXX = c++ -std=c++98
-SRCS = main.cpp Convert.cpp
+SRCS = main.cpp Convert.cpp wordch.cpp wordshow.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror
 

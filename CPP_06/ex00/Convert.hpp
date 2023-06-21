@@ -6,67 +6,52 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 23:51:37 by user              #+#    #+#             */
-/*   Updated: 2023/05/08 14:28:04 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 10:56:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Show_Static_HPP
-#define Show_Static_HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
 #include <iostream>
 
-#define CHAR 1
-#define INT 2
-#define FLOAT 3
-#define DOUBLE 4
+#define CHAR	1
+#define INT		2
+#define FLOAT	3
+#define DOUBLE	4
 
-class Convert
+class ScalarConverter
 {
 	private:
-		std::string	_sub;
-		int			_type;
-
-		char		_ch;
-		bool		ch_notdisable;
-		bool		ch_impossible;
-		int			_nb;
-		bool		int_impossible;
-		float		_f;
-		double		_d;
-
+		static	char	_char;
+		static	int		_int;
+		static	double	_double;
+		static	float	_float;
+	
 	public:
-		Convert(std::string sub);
-		Convert(Convert const &sub);
-		Convert& operator=(Convert const &sub);
-		~Convert();
-		std::string	get_sub() const;
-		char		get_char() const;
-		int			get_int() const;
-		float		get_float() const;
-		double		get_double() const;
-		bool		get_displayornot() const;
-		bool		get_impossibleornot() const;
-		bool		get_intimpossibleornot() const;
+		static	void	convert(const std::string &literal);
 
-		void		set_sub(std::string sub);
+		static	bool	check_literal_char(const std::string &literal);
+		static	bool	check_literal_int(const std::string &literal);
+		static	bool	check_literal_double(const std::string &literal);
+		static	size_t	count_coronnum(const std::string &literal);
+		static	bool	check_literal_float(const std::string &literal);
+		static	size_t	count_fnum(const std::string &literal);
 
-		int			char_ch();
-		int			int_ch();
-		int			float_ch();
-		int			double_ch();
+		static	void	ch_show(const std::string &literal);
+		static	void	int_show(const std::string &literal);
+		static	void	float_show(const std::string &literal);
+		static	void	double_show(const std::string &literal);
 
-		void		set_chartype();
-		void		set_inttype();
-		void		set_floattype();
-		void		set_doubletype();
+		static	void	ch_showswitch(char _ch);
+		static	void	float_showswitch(float _float);
+		static	void	double_showswitch(double _double);
 
-		class	Error_Convert
-		{
-			public:
-				virtual const char* what() const throw();
-		};
+		// class	Error_Convert
+		// {
+		// 	public:
+		// 		virtual const char* what() const throw();
+		// };
 };
-
-std::ostream &operator<<(std::ostream &out, Convert &sub);
 
 #endif
