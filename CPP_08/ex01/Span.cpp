@@ -6,11 +6,16 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 23:14:40 by user              #+#    #+#             */
-/*   Updated: 2023/05/10 00:38:10 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 21:11:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span(): _n(0)
+{
+	std::cout << "Span constructor called" << std::endl;
+}
 
 Span::Span(unsigned int N): _n(N)
 {
@@ -49,10 +54,8 @@ void	Span::addNumber(int num)
 	this->_array.push_back(num);
 }
 
-void	Span::addNumbers_random(int num)
+void	Span::addNumbers_random(unsigned int num)
 {
-	int	random_num;
-
 	if (num > this->get_n())
 		throw std::runtime_error("size is over!");
 	if (num + this->get_array().size() > this->get_n())
@@ -94,7 +97,6 @@ int	Span::longestSpan()
 	std::vector<int>	tmp;
 	size_t				tmp_size;
 	size_t				pos;
-	int					max;
 
 	if (this->get_array().size() == 0)
 		throw std::runtime_error("this length is 0");
