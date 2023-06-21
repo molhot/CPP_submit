@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 09:40:10 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 11:21:50 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 12:02:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,41 @@ int ScalarConverter::_int;
 char ScalarConverter::_char;
 float ScalarConverter::_float;
 double ScalarConverter::_double;
+
+void	ScalarConverter::show_nan()
+{
+	std::cout << std::endl;
+	std::cout << "ch : impossible" << std::endl;
+	std::cout << "int : " << "impossible" << std::endl;
+	std::cout << "float : " << "nanf" << std::endl;
+	std::cout << "double : " << "nan" << std::endl;
+	std::cout << std::endl;
+	std::cout << "=========================" << std::endl;
+}
+
+void	ScalarConverter::show_inf(const std::string &literal)
+{
+	if (literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
+	{
+		std::cout << std::endl;
+		std::cout << "ch : impossible" << std::endl;
+		std::cout << "int : " << "impossible" << std::endl;
+		std::cout << "float : " << "+inff" << std::endl;
+		std::cout << "double : " << "+inf" << std::endl;
+		std::cout << std::endl;
+		std::cout << "=========================" << std::endl;
+	}
+	else if (literal.compare("-inf") == 0 || literal.compare("-inff") == 0)
+	{
+		std::cout << std::endl;
+		std::cout << "ch : impossible" << std::endl;
+		std::cout << "int : " << "impossible" << std::endl;
+		std::cout << "float : " << "-inff" << std::endl;
+		std::cout << "double : " << "-inf" << std::endl;
+		std::cout << std::endl;
+		std::cout << "=========================" << std::endl;
+	}
+}
 
 void	ScalarConverter::ch_showswitch(char _ch)
 {
@@ -54,10 +89,9 @@ void	ScalarConverter::ch_show(const std::string &literal)
 	_double = static_cast<double>(_char);
 	_float = static_cast<float>(_char);
 	
-	std::cout << "=========================" << std::endl;
 	std::cout << std::endl;
 	ch_showswitch(_char);
-	std::cout << "int is " << _int << std::endl;
+	std::cout << "int : " << _int << std::endl;
 	float_showswitch(_float);
 	double_showswitch(_double);
 	std::cout << std::endl;
@@ -71,10 +105,9 @@ void	ScalarConverter::int_show(const std::string &literal)
 	_double = static_cast<double>(_int);
 	_float = static_cast<float>(_int);
 	
-	std::cout << "=========================" << std::endl;
 	std::cout << std::endl;
 	ch_showswitch(_char);
-	std::cout << "int is " << _int << std::endl;
+	std::cout << "int : " << _int << std::endl;
 	float_showswitch(_float);
 	double_showswitch(_double);
 	std::cout << std::endl;
@@ -88,10 +121,9 @@ void	ScalarConverter::float_show(const std::string &literal)
 	_int = static_cast<int>(_float);
 	_double = static_cast<double>(_float);
 	
-	std::cout << "=========================" << std::endl;
 	std::cout << std::endl;
 	ch_showswitch(_char);
-	std::cout << "int is " << _int << std::endl;
+	std::cout << "int : " << _int << std::endl;
 	float_showswitch(_float);
 	double_showswitch(_double);
 	std::cout << std::endl;
@@ -105,10 +137,9 @@ void	ScalarConverter::double_show(const std::string &literal)
 	_char = static_cast<char>(_double);
 	_int = static_cast<int>(_double);
 	
-	std::cout << "=========================" << std::endl;
 	std::cout << std::endl;
 	ch_showswitch(_char);
-	std::cout << "int is " << _int << std::endl;
+	std::cout << "int : " << _int << std::endl;
 	float_showswitch(_float);
 	double_showswitch(_double);
 	std::cout << std::endl;

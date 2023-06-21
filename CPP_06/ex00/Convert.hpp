@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 23:51:37 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 10:56:04 by user             ###   ########.fr       */
+/*   Updated: 2023/06/21 11:47:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ class ScalarConverter
 	
 	public:
 		static	void	convert(const std::string &literal);
+
+		static	void	show_nan();
+		static	void	show_inf(const std::string &literal);
 
 		static	bool	check_literal_char(const std::string &literal);
 		static	bool	check_literal_int(const std::string &literal);
