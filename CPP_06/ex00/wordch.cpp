@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:40:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/20 23:37:02 by user             ###   ########.fr       */
+/*   Updated: 2023/06/22 12:07:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ bool	ScalarConverter::check_literal_int(const std::string &literal)
 			return (false);
 		pos++;
 	}
+	try
+	{
+		std::stoi(literal);
+	}
+	catch(const std::exception& e)
+	{
+		return (false);
+	}
 	return (true);
 }
 
@@ -65,6 +73,14 @@ bool	ScalarConverter::check_literal_double(const std::string &literal)
 		if (std::isdigit(literal[pos]) == false)
 			return (false);
 		pos++;
+	}
+	try
+	{
+		std::stod(literal);
+	}
+	catch(const std::exception& e)
+	{
+		return (false);
 	}
 	return (true);
 }
@@ -101,6 +117,14 @@ bool	ScalarConverter::check_literal_float(const std::string &literal)
 		if (std::isdigit(literal[pos]) == false)
 			return (false);
 		pos++;
+	}
+	try
+	{
+		std::stof(literal);
+	}
+	catch(const std::exception& e)
+	{
+		return (false);
 	}
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 23:40:05 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 12:51:06 by user             ###   ########.fr       */
+/*   Updated: 2023/06/22 12:08:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main()
 	ScalarConverter::convert("45");
 	ScalarConverter::convert("-42");
 	ScalarConverter::convert("0.0");
+	ScalarConverter::convert("111111111111111111111111111111111111111111");
 	ScalarConverter::convert("4.2");
 	ScalarConverter::convert("-4.2f");
 	ScalarConverter::convert("42.0f");
