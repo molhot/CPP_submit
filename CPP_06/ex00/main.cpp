@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 23:40:05 by user              #+#    #+#             */
-/*   Updated: 2023/06/24 02:07:49 by user             ###   ########.fr       */
+/*   Updated: 2023/06/24 03:14:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,5 @@ int main(int argc, char **argv)
 	// ScalarConverter::convert("inff");//こいつはない
 	// ScalarConverter::convert("+inff");
 	// ScalarConverter::convert("-inff");
-
-	// //overint, but double
 	return (0);
 }
