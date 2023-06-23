@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:28:16 by user              #+#    #+#             */
-/*   Updated: 2023/06/24 02:33:57 by user             ###   ########.fr       */
+/*   Updated: 2023/06/24 03:07:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main()
 	if (test != NULL)
 		std::cout << "nanka is " << deserialize(serialize(test))->_nanka << std::endl;
 
-	std::cout << serialize(NULL) << std::endl;;
+	std::cout << serialize(NULL) << std::endl;
 	delete test;
+	system("leaks -q ex01");
 }
