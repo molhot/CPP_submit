@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:40:48 by user              #+#    #+#             */
-/*   Updated: 2023/06/22 12:07:47 by user             ###   ########.fr       */
+/*   Updated: 2023/06/23 00:56:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,15 @@ bool	ScalarConverter::check_literal_int(const std::string &literal)
 			return (false);
 		pos++;
 	}
-	try
-	{
-		std::stoi(literal);
-	}
-	catch(const std::exception& e)
-	{
-		return (false);
-	}
 	return (true);
 }
 
 bool	ScalarConverter::check_literal_double(const std::string &literal)
 {
-	size_t	coron_pos;
-	size_t	pos;
-	size_t	literal_len;
+	size_t		coron_pos;
+	size_t		pos;
+	size_t		literal_len;
+	std::string	literal_2;
 
 	if (literal.compare("-inf") == 0 || literal.compare("+inf") == 0 || literal.compare("nan") == 0)
 		return (true);
@@ -73,14 +66,6 @@ bool	ScalarConverter::check_literal_double(const std::string &literal)
 		if (std::isdigit(literal[pos]) == false)
 			return (false);
 		pos++;
-	}
-	try
-	{
-		std::stod(literal);
-	}
-	catch(const std::exception& e)
-	{
-		return (false);
 	}
 	return (true);
 }
@@ -117,14 +102,6 @@ bool	ScalarConverter::check_literal_float(const std::string &literal)
 		if (std::isdigit(literal[pos]) == false)
 			return (false);
 		pos++;
-	}
-	try
-	{
-		std::stof(literal);
-	}
-	catch(const std::exception& e)
-	{
-		return (false);
 	}
 	return (true);
 }

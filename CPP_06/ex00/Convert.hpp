@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 23:51:37 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 11:47:53 by user             ###   ########.fr       */
+/*   Updated: 2023/06/24 01:08:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,21 @@
 #define INT		2
 #define FLOAT	3
 #define DOUBLE	4
+#define DBL_MAX 1.79769e+308
 
 class ScalarConverter
 {
 	private:
 		static	char	_char;
 		static	int		_int;
+		static	bool	_int_overflaw;
+		static	bool	_int_overflaw_minus;
 		static	double	_double;
+		static	bool	_double_overflaw;
+		static	bool	_double_overflaw_minus;
 		static	float	_float;
+		static	bool	_float_overflaw;
+		static	bool	_float_overflaw_minus;
 	
 	public:
 		static	void	convert(const std::string &literal);
@@ -47,6 +54,7 @@ class ScalarConverter
 		static	void	double_show(const std::string &literal);
 
 		static	void	ch_showswitch(char _ch);
+		static	void	int_showswitch(int _int);
 		static	void	float_showswitch(float _float);
 		static	void	double_showswitch(double _double);
 
