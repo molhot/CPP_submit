@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 08:38:07 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 22:57:09 by user             ###   ########.fr       */
+/*   Updated: 2023/07/01 21:46:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,50 @@ void	check_anothercontainer()
 	}
 }
 
+void	copy_constructor_test(MutantStack<int> some)
+{
+	some.push(2000);
+	MutantStack<int>::iterator it = some.begin();
+	MutantStack<int>::iterator ite = some.end();
+
+	while (it != ite) 
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+}
+
+void	copy_assignement_test(MutantStack<int> some)
+{
+	some.push(100);
+	MutantStack<int>::iterator it = some.begin();
+	MutantStack<int>::iterator ite = some.end();
+
+	while (it != ite) 
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+}
+
 int main()
 {
 	MutantStack<int> mstack;
+	MutantStack<int> test2;
+
 	
 	mstack.push(5); 
 	mstack.push(17);
+
+	std::cout << "====== ======" << std::endl;
+	test2 = mstack;
+	copy_assignement_test(test2);
+	std::cout << "====== ======" << std::endl;
+
+	std::cout << "====== ======" << std::endl;
+	MutantStack<int> test(mstack);
+	copy_constructor_test(test);
+	std::cout << "====== ======" << std::endl;
 	
 	std::cout << "top is " << mstack.top() << std::endl; 
 	mstack.pop();
@@ -58,7 +96,7 @@ int main()
 	
 	mstack.push(3); 
 	mstack.push(5); 
-	mstack.push(737); //[...]
+	mstack.push(737);
 	mstack.push(0);
 
 	std::cout << "top is " << mstack.top() << std::endl; 
