@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 23:14:40 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 21:11:43 by user             ###   ########.fr       */
+/*   Updated: 2023/07/01 18:11:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,21 @@ void	Span::addNumbers_random(unsigned int num)
 	}
 }
 
-int	Span::shortestSpan()
+unsigned int	Span::comparison_min(unsigned int left, unsigned int right)
 {
-	std::vector<int>	tmp;
-	size_t				tmp_size;
-	size_t				pos;
-	int					mini;
+	if (left >= right)
+		return (right);
+	else
+		return (left);
+}
+
+unsigned int	Span::shortestSpan()
+{
+	std::vector<int>		tmp;
+	size_t					tmp_size;
+	size_t					pos;
+	unsigned int			tmp_diff;
+	unsigned int			mini;
 
 	if (this->get_array().size() == 0)
 		throw std::runtime_error("this length is 0");
@@ -83,16 +92,17 @@ int	Span::shortestSpan()
 	tmp_size = tmp.size();
 	pos = 0;
 	std::sort(tmp.begin(), tmp.end());
-	mini = std::numeric_limits<int>::max();
+	mini = static_cast<unsigned int>(INT_MAX) + static_cast<unsigned int>(INT_MAX) + 1;
 	while (pos != tmp_size - 1)
 	{
-		mini = std::min(mini, tmp[pos + 1] - tmp[pos]);
+		tmp_diff = static_cast<unsigned int>(tmp[pos + 1] - tmp[pos]);
+		mini = comparison_min(mini, tmp_diff);
 		pos++;
 	}
 	return (mini);
 }
 
-int	Span::longestSpan()
+unsigned int	Span::longestSpan()
 {
 	std::vector<int>	tmp;
 	size_t				tmp_size;
@@ -113,4 +123,3 @@ std::vector<int>	Span::get_array() const
 {
 	return (this->_array);
 }
-

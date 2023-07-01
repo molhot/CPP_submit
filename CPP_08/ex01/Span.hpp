@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 23:14:43 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 21:10:53 by user             ###   ########.fr       */
+/*   Updated: 2023/07/01 18:04:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <limits.h>
 
 #include <cstdlib>
 #include <ctime>
@@ -25,6 +26,7 @@ class Span
 	private:
 		unsigned int		_n;
 		std::vector<int>	_array;
+		unsigned int		comparison_min(unsigned int left, unsigned int right);
 
 	public:
 		Span();
@@ -34,8 +36,8 @@ class Span
 		~Span();
 		void				addNumber(int num);
 		void				addNumbers_random(unsigned int count);
-		int					shortestSpan();
-		int					longestSpan();
+		unsigned int					shortestSpan();//INT_MAX-INTMINの可能性
+		unsigned int					longestSpan();
 		unsigned int		get_n() const;
 		std::vector<int>	get_array() const;
 };
