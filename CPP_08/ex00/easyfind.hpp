@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 22:11:55 by user              #+#    #+#             */
-/*   Updated: 2023/06/21 18:05:19 by user             ###   ########.fr       */
+/*   Updated: 2023/07/01 16:48:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 
 template <typename T>
 
-void	easyfind(T& sub, int nbr);
+int	easyfind(T& sub, int nbr);
 
 #endif
