@@ -6,11 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:07 by user              #+#    #+#             */
-/*   Updated: 2023/07/04 22:11:16 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 00:57:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#define FORMAT_ERROR	1
+#define	MINUSNUM_ERROR	2
+#define OVERNUM_ERROR	3
+#define NUMFORMAT_ERROR	4
 
 static void	show_usage()
 {
@@ -40,22 +44,32 @@ static std::string	file_not_exist(std::string sub)
 	return "test.csv";
 }
 
-static bool rate_ch(std::string ratio)
+static int rate_ch(std::string ratio)
 {
 	size_t	pos = 0;
 	size_t	dot_counter = 0;
 
+	if (ratio[pos] == '-')
+		return (MINUSNUM_ERROR);
+	else if (ratio[pos] == '+')
+		pos++;
 	while (ratio[pos] != '\0')
 	{
 		if (ratio[pos] == '.' && dot_counter == 0)
+		{
+			if (pos > 4)
+				return (OVERNUM_ERROR);
 			dot_counter++;
+		}
 		else if (ratio[pos] == '.' && dot_counter != 0)
-			return (false);
+			return (NUMFORMAT_ERROR);
 		else if (!('0' <= ratio[pos] && ratio[pos] <= '9'))
-			return (false);
+			return (NUMFORMAT_ERROR);
 		pos++;
 	}
-	return (true);
+	if (dot_counter != 0 && pos > 4)
+		return (OVERNUM_ERROR);
+	return (0);
 }
 
 static bool day_ch(char left, char right)
@@ -99,17 +113,17 @@ static bool line_correctly_ch(std::string line)
 	while ('0' <= line[pos] <= '9')
 		pos++;
 	if (line[pos] != '-')
-		return (false);
+		return (FORMAT_ERROR);
 	pos++;
 	if (month_ch(line[pos], line[pos + 1]) == false)
-		return (false);
+		return (FORMAT_ERROR);
 	pos = pos + 2;
 	if (day_ch(line[pos], line[pos + 1]) == false)
-		return (false);
+		return (FORMAT_ERROR);
 	pos = pos + 2;
-	if (line[pos] != ',')
-		return (false);
-	pos = pos + 1;
+	if (line[pos] != ' ' || line[pos] != '|' || line[pos] != ' ')
+		return (FORMAT_ERROR);
+	pos = pos + 2;
 
 	std::string	rate = "";
 
@@ -118,9 +132,7 @@ static bool line_correctly_ch(std::string line)
 		rate = rate + line[pos];
 		pos++;
 	}
-	if (rate_ch(rate) == false)
-		return (false);
-	return (true);
+	return rate_ch(rate);
 }
 
 static double stringToDouble(const std::string& str) {
@@ -128,6 +140,45 @@ static double stringToDouble(const std::string& str) {
     double result;
     iss >> result;
     return result;
+}
+
+static	void	show_error_switching(int error_num)
+{
+	switch (error_num)
+	{
+		case FORMAT_ERROR:
+			std::cout << " FORMAT ERROR" << std::endl;
+		case MINUSNUM_ERROR:
+			std::cout << " HANDLING POSITIVE NUM" << std::endl;
+		case OVERNUM_ERROR:
+			std::cout << " TOO LARGE NUM" << std::endl;
+		case NUMFORMAT_ERROR:
+			std::cout << " THIS IS ... NUM ... ? CHECK IT !" << std::endl;
+	}
+}
+
+std::string obtain_day_info(std::string line, size_t *pos)
+{
+	std::string	key = "";
+
+	while (line[*pos] != ' ')
+	{
+		key = key + line[*pos];
+		*pos = *pos + 1;
+	}
+	return (key);
+}
+
+std::string obtain_rate_info(std::string line, size_t *pos)
+{
+	std::string	key = "";
+
+	while (line[*pos] != '\0')
+	{
+		key = key + line[*pos];
+		*pos = *pos + 1;
+	}
+	return (key);
 }
 
 void	read_file(std::string file, std::map<std::string, double> csv_data)
@@ -142,47 +193,32 @@ void	read_file(std::string file, std::map<std::string, double> csv_data)
 		std::string					key = "";
 		std::string					val = "";
 		double						val_num = 0.0;
+		int							error_num;
 
 		pos = 0;
-		if (line_correctly_ch(line) == false)
+		error_num = line_correctly_ch(line);
+		if (error_num != 0)
 		{
 			std::cout << line;
-			std::cout << " is errorm input" << std::endl;
+			show_error_switching(error_num);
 		}
 		else
 		{
-			while (line[pos] != '\0')
+			key = obtain_day_info(line, &pos);
+			pos = pos + 3;
+			val = obtain_rate_info(line, &pos);
+			val_num = stringToDouble(val);
+			if (itr == csv_data.begin() && key != itr->first)
+				std::cout << key << " is not founded!!" << std::endl;
+			else if (val_num > 1000)
+				std::cout << key << " TOO LARGE NUM" << std::endl;
+			else if (itr != csv_data.begin() && key != itr->first)
 			{
-				if (line[pos] == ' ' && line[pos + 1] == '|' && line[pos + 2] == ' ')
-				{
-					pos = pos + 3;
-					while (line[pos] != '\0')
-					{
-						val = val + line[pos];
-						pos++;
-					}
-					try
-					{
-						val_num = std::stod(val);
-						itr = csv_data.lower_bound(key);
-						if (itr == csv_data.begin() && key != itr->first)
-							std::cout << key << " is not founded!!" << std::endl;
-						else if (itr != csv_data.begin() && key != itr->first)
-						{
-							itr--;
-							std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
-						}
-						else
-							std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
-					}
-					catch(const std::exception& e)
-					{
-						
-					}
-				}
-				key = key + line[pos];
-				pos++;
+				itr--;
+				std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
 			}
+			else
+				std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
 		}
 	}
 }
