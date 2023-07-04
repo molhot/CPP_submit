@@ -2,11 +2,12 @@ NAME = btc
 CC = g++ -std=c++98
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
+CXXFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 ${NAME}:${OBJS}
-	${CC} ${OBJS} -o ${NAME}
+	${CC} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
 	rm -f $(OBJS)

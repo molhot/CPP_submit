@@ -6,26 +6,25 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:07 by user              #+#    #+#             */
-/*   Updated: 2023/05/19 09:13:09 by user             ###   ########.fr       */
+/*   Updated: 2023/07/04 22:11:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-void	show_usage()
+static void	show_usage()
 {
 	std::cout << "you must one file argument" << std::endl;
 	std::cout << "like [./btc (filename)]" << std::endl;
-	exit (1);
 }
 
-bool	file_existch(std::string sub)
+static bool	file_existch(std::string sub)
 {
 	std::ifstream	file(sub);
 	return (file.good());
 }
 
-std::string	file_not_exist(std::string sub)
+static std::string	file_not_exist(std::string sub)
 {
 	std::string input;
 
@@ -41,107 +40,176 @@ std::string	file_not_exist(std::string sub)
 	return "test.csv";
 }
 
-std::map<std::string, double> read_csvfile(const std::string& filepath, char delim)
+static bool rate_ch(std::string ratio)
 {
-	std::ifstream						csv_file(filepath.c_str());
-	std::string							line;
-	
-	std::map<std::string, double>		csv_map;
+	size_t	pos = 0;
+	size_t	dot_counter = 0;
 
-	while (std::getline(csv_file, line))
+	while (ratio[pos] != '\0')
 	{
-		std::vector<std::string>	row;
-		size_t						pos;
-
-		std::string					key;
-		std::string					val;
-
-		pos = 0;
-		while (line[pos] != '\0')
-		{
-			if (line[pos] == delim)
-			{
-				pos++;
-				while (line[pos] != '\0')
-				{
-					val = val + line[pos];
-					pos++;
-				}
-				try
-				{
-					csv_map[key] = std::stod(val);
-				}
-				catch(const std::exception& e)
-				{
-					
-				}
-			}
-			key = key + line[pos];
-			pos++;
-		}
+		if (ratio[pos] == '.' && dot_counter == 0)
+			dot_counter++;
+		else if (ratio[pos] == '.' && dot_counter != 0)
+			return (false);
+		else if (!('0' <= ratio[pos] && ratio[pos] <= '9'))
+			return (false);
+		pos++;
 	}
-	return (csv_map);
+	return (true);
+}
+
+static bool day_ch(char left, char right)
+{
+	if ('0' <= left <= '2')
+	{
+		if ('0' <= right <= '9')
+			return (true);
+		return (false);
+	}
+	else if (left == '3')
+	{
+		if ('0' <= right <= '1')
+			return (true);
+		return (false);
+	}
+	return (false);
+}
+
+static bool month_ch(char left, char right)
+{
+	if (left == '0')
+	{
+		if ('1' <= right <= '9')
+			return (true);
+		return (false);
+	}
+	else if (left == '1')
+	{
+		if ('0' <= right <= '2')
+			return (true);
+		return (false);
+	}
+	return (false);
+}
+
+static bool line_correctly_ch(std::string line)
+{
+	size_t	pos = 0;
+
+	while ('0' <= line[pos] <= '9')
+		pos++;
+	if (line[pos] != '-')
+		return (false);
+	pos++;
+	if (month_ch(line[pos], line[pos + 1]) == false)
+		return (false);
+	pos = pos + 2;
+	if (day_ch(line[pos], line[pos + 1]) == false)
+		return (false);
+	pos = pos + 2;
+	if (line[pos] != ',')
+		return (false);
+	pos = pos + 1;
+
+	std::string	rate = "";
+
+	while (line[pos] != '\0')
+	{
+		rate = rate + line[pos];
+		pos++;
+	}
+	if (rate_ch(rate) == false)
+		return (false);
+	return (true);
+}
+
+static double stringToDouble(const std::string& str) {
+    std::istringstream iss(str);
+    double result;
+    iss >> result;
+    return result;
 }
 
 void	read_file(std::string file, std::map<std::string, double> csv_data)
 {
-	std::ifstream							csv_file(file.c_str());
+	std::ifstream							subject_file(file.c_str());
 	std::string								line;
 	size_t									pos;
 	std::map<std::string, double>::iterator	itr;
 
-	while (std::getline(csv_file, line))
+	while (std::getline(subject_file, line))
 	{
-		std::string					key;
-		std::string					val;
-		double						val_num;
+		std::string					key = "";
+		std::string					val = "";
+		double						val_num = 0.0;
 
 		pos = 0;
-		while (line[pos] != '\0')
+		if (line_correctly_ch(line) == false)
 		{
-			if (line[pos] == ' ' && line[pos + 1] == '|' && line[pos + 2] == ' ')
+			std::cout << line;
+			std::cout << " is errorm input" << std::endl;
+		}
+		else
+		{
+			while (line[pos] != '\0')
 			{
-				pos = pos + 3;
-				while (line[pos] != '\0')
+				if (line[pos] == ' ' && line[pos + 1] == '|' && line[pos + 2] == ' ')
 				{
-					val = val + line[pos];
-					pos++;
-				}
-				try
-				{
-					val_num = std::stod(val);
-					itr = csv_data.lower_bound(key);
-					if (itr == csv_data.begin() && key != itr->first)
-						std::cout << key << " is not founded!!" << std::endl;
-					else if (itr != csv_data.begin() && key != itr->first)
+					pos = pos + 3;
+					while (line[pos] != '\0')
 					{
-						itr--;
-						std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
+						val = val + line[pos];
+						pos++;
 					}
-					else
-						std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
+					try
+					{
+						val_num = std::stod(val);
+						itr = csv_data.lower_bound(key);
+						if (itr == csv_data.begin() && key != itr->first)
+							std::cout << key << " is not founded!!" << std::endl;
+						else if (itr != csv_data.begin() && key != itr->first)
+						{
+							itr--;
+							std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
+						}
+						else
+							std::cout << key << " 's subject_key is " << itr->first << " and value is " << itr->second << " and result is "  << val_num * itr->second << std::endl;
+					}
+					catch(const std::exception& e)
+					{
+						
+					}
 				}
-				catch(const std::exception& e)
-				{
-					
-				}
+				key = key + line[pos];
+				pos++;
 			}
-			key = key + line[pos];
-			pos++;
 		}
 	}
 }
 
 int main(int argc, char **argv)
 {
+	if (argc != 2)
+	{
+		show_usage();
+		return (1);
+	}
+	BitcoinExchange database;
+	if (database.line_correctlyexit() == false)
+	{
+		std::cout << "========================" << std::endl;
+		std::cout << "<<       CAUTION      >>" << std::endl;
+		std::cout << "========================" << std::endl;
+		std::cout << "|  CSV FILE IS MISSED  |" << std::endl;
+		std::cout << "========================" << std::endl;
+		return (1);
+	}
 	std::string	filename;
 	std::string	input;
 
-	if (argc != 2)
-		show_usage();
 	if (file_existch(argv[1]) == false)
 		filename = file_not_exist(argv[1]);
 	else
 		filename = argv[1];
-	read_file(filename, read_csvfile("data.csv", ','));
+	read_file(filename, database.csvinfo_return());
 }
