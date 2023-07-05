@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:01 by user              #+#    #+#             */
-/*   Updated: 2023/07/05 11:58:19 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 23:01:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,13 @@ bool BitcoinExchange::line_correctly_ch(std::string line)
 	while ('0' <= line[pos] && line[pos] <= '9')
 		pos++;
 	if (line[pos] != '-')
-	{
-		//std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
-	}
 	pos++;
 	if (month_ch(line[pos], line[pos + 1]) == false)
-	{
-		//std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
-	}
 	pos = pos + 3;
 	if (day_ch(line[pos], line[pos + 1]) == false)
-	{
-		std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
-	}
 	pos = pos + 2;
 	if (line[pos] != ',')
 		return (false);
@@ -133,6 +124,90 @@ std::string	BitcoinExchange::get_val(std::string line, size_t *pos)
 	return (val);
 }
 
+void BitcoinExchange::ready_alldayinfo(const std::string &day_info)
+{
+	size_t	pos = 0;
+
+	while (day_info[pos] != '-')
+	{
+		this->year = this->year + day_info[pos];
+		pos++;
+	}
+	pos++;
+	while (day_info[pos] != '-')
+	{
+		this->month = this->month + day_info[pos];
+		pos++;
+	}
+	pos++;
+	while (day_info[pos] != '\0')
+	{
+		this->day = this->day + day_info[pos];
+		pos++;
+	}
+}
+
+bool BitcoinExchange::oddmonth_ch()
+{
+	std::istringstream iss(this->day); 
+	int result;
+
+    iss >> result;
+	if (result > 30)
+		return (false);
+	return (true);
+}
+
+bool BitcoinExchange::addmonth_ch()
+{
+	std::istringstream iss(this->day); 
+	int result;
+
+    iss >> result;
+	if (result > 31)
+		return (false);
+	return (true);
+}
+
+bool BitcoinExchange::uru_ch()
+{
+	std::istringstream iss(this->day); 
+	int result;
+
+    iss >> result;
+	if (result > 29)
+		return (false);
+	return (true);
+}
+
+bool BitcoinExchange::not_uru_ch()
+{
+	std::istringstream iss(this->day); 
+	int result;
+
+    iss >> result;
+	if (result > 28)
+		return (false);
+	return (true);
+}
+
+bool BitcoinExchange::date_ch()
+{
+	std::istringstream iss(this->year); 
+	int year_int;
+
+    iss >> year_int;
+	// std::cout << this->year << this->month << this->day << std::endl;
+	if ((this->month == "02" && (year_int % 400) == 0) || (this->month == "02" && (year_int % 4) == 0 && (year_int % 100) != 0))
+		return (uru_ch());
+	else if (this->month == "02")
+		return (not_uru_ch());
+	if (this->month == "04" || this->month == "06" || this->month == "09" || this->month == "11")
+		return (oddmonth_ch());
+	else
+		return (addmonth_ch());
+}
+
 bool BitcoinExchange::reading_csv(std::map<std::string, double> *map)
 {
 	std::ifstream	file("data.csv");
@@ -143,10 +218,16 @@ bool BitcoinExchange::reading_csv(std::map<std::string, double> *map)
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
+		this->year = "";
+		this->month = "";
+		this->day = "";
 		size_t			pos = 0;
 		if (line_correctly_ch(line) == false)
 			return (false);
 		key = get_key(line, &pos);
+		ready_alldayinfo(key);
+		if (date_ch() == false)
+			return (false);
 		pos = pos + 1;
 		val = get_val(line, &pos);
 		(*map)[key] = stringToDouble(val);
