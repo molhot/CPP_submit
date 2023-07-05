@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:07 by user              #+#    #+#             */
-/*   Updated: 2023/07/05 12:17:24 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 12:35:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static bool month_ch(char left, char right)
 	return (false);
 }
 
-static bool line_correctly_ch(std::string line)
+static int line_correctly_ch(std::string line)
 {
 	size_t	pos = 0;
 
@@ -126,7 +126,6 @@ static bool line_correctly_ch(std::string line)
 	pos = pos + 3;
 
 	std::string	rate = "";
-
 	while (line[pos] != '\0')
 	{
 		rate = rate + line[pos];
