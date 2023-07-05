@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:01 by user              #+#    #+#             */
-/*   Updated: 2023/07/04 21:47:43 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 11:58:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ bool BitcoinExchange::rate_ch(std::string ratio)
 
 bool BitcoinExchange::day_ch(char left, char right)
 {
-	if ('0' <= left <= '2')
+	if ('0' <= left && left <= '2')
 	{
-		if ('0' <= right <= '9')
+		if ('0' <= right && right <= '9')
 			return (true);
 		return (false);
 	}
 	else if (left == '3')
 	{
-		if ('0' <= right <= '1')
+		if ('0' <= right && right <= '1')
 			return (true);
 		return (false);
 	}
@@ -51,13 +51,13 @@ bool BitcoinExchange::month_ch(char left, char right)
 {
 	if (left == '0')
 	{
-		if ('1' <= right <= '9')
+		if ('1' <= right && right <= '9')
 			return (true);
 		return (false);
 	}
 	else if (left == '1')
 	{
-		if ('0' <= right <= '2')
+		if ('0' <= right && right <= '2')
 			return (true);
 		return (false);
 	}
@@ -68,16 +68,25 @@ bool BitcoinExchange::line_correctly_ch(std::string line)
 {
 	size_t	pos = 0;
 
-	while ('0' <= line[pos] <= '9')
+	while ('0' <= line[pos] && line[pos] <= '9')
 		pos++;
 	if (line[pos] != '-')
+	{
+		//std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
+	}
 	pos++;
 	if (month_ch(line[pos], line[pos + 1]) == false)
+	{
+		//std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
-	pos = pos + 2;
+	}
+	pos = pos + 3;
 	if (day_ch(line[pos], line[pos + 1]) == false)
+	{
+		std::cout << line << " FORMAT ERROR" << std::endl;
 		return (false);
+	}
 	pos = pos + 2;
 	if (line[pos] != ',')
 		return (false);
@@ -124,23 +133,25 @@ std::string	BitcoinExchange::get_val(std::string line, size_t *pos)
 	return (val);
 }
 
-bool BitcoinExchange::reading_csv(std::map<std::string, double> map)
+bool BitcoinExchange::reading_csv(std::map<std::string, double> *map)
 {
 	std::ifstream	file("data.csv");
 	std::string		line;
-	size_t			pos = 0;
 	std::string		key;
 	std::string		val;
 
+	std::getline(file, line);
 	while (std::getline(file, line))
 	{
+		size_t			pos = 0;
 		if (line_correctly_ch(line) == false)
 			return (false);
 		key = get_key(line, &pos);
 		pos = pos + 1;
-		val = get_key(line, &pos);
-		map[key] = stringToDouble(val);
+		val = get_val(line, &pos);
+		(*map)[key] = stringToDouble(val);
 	}
+	std::cout << "<< ready database >>" << std::endl;
 	return (true);
 }
 
@@ -159,9 +170,12 @@ BitcoinExchange::BitcoinExchange()
 	std::cout << "<< regist database >>" << std::endl;
 	std::ifstream file("data.csv");
 	if (file.good() == true)
-		this->csv_correct_ornot = reading_csv(this->csv_info);
+		this->csv_correct_ornot = reading_csv(&(this->csv_info));
 	else
+	{
+		std::cout << "data.csv doew not exists" << std::endl;
 		this->csv_correct_ornot = false;
+	}
 }
 
 BitcoinExchange::~BitcoinExchange()

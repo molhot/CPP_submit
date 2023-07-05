@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:04 by user              #+#    #+#             */
-/*   Updated: 2023/07/04 21:47:00 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 11:57:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	BitcoinExchange
 	private:
 		std::map<std::string, double>	csv_info;
 		bool							csv_correct_ornot;
-		bool							reading_csv(std::map<std::string, double> 	sub_map);
+		bool							reading_csv(std::map<std::string, double> 	*sub_map);
 		bool							line_correctly_ch(std::string line);
 		bool							month_ch(char left, char right);
 		bool							day_ch(char left, char right);

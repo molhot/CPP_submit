@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:07 by user              #+#    #+#             */
-/*   Updated: 2023/07/05 00:57:55 by user             ###   ########.fr       */
+/*   Updated: 2023/07/05 12:17:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,15 @@ static int rate_ch(std::string ratio)
 
 static bool day_ch(char left, char right)
 {
-	if ('0' <= left <= '2')
+	if ('0' <= left && left <= '2')
 	{
-		if ('0' <= right <= '9')
+		if ('0' <= right && right <= '9')
 			return (true);
 		return (false);
 	}
 	else if (left == '3')
 	{
-		if ('0' <= right <= '1')
+		if ('0' <= right && right <= '1')
 			return (true);
 		return (false);
 	}
@@ -93,13 +93,13 @@ static bool month_ch(char left, char right)
 {
 	if (left == '0')
 	{
-		if ('1' <= right <= '9')
+		if ('1' <= right && right <= '9')
 			return (true);
 		return (false);
 	}
 	else if (left == '1')
 	{
-		if ('0' <= right <= '2')
+		if ('0' <= right && right <= '2')
 			return (true);
 		return (false);
 	}
@@ -110,20 +110,20 @@ static bool line_correctly_ch(std::string line)
 {
 	size_t	pos = 0;
 
-	while ('0' <= line[pos] <= '9')
+	while ('0' <= line[pos] && line[pos]<= '9')
 		pos++;
 	if (line[pos] != '-')
 		return (FORMAT_ERROR);
 	pos++;
 	if (month_ch(line[pos], line[pos + 1]) == false)
 		return (FORMAT_ERROR);
-	pos = pos + 2;
+	pos = pos + 3;
 	if (day_ch(line[pos], line[pos + 1]) == false)
 		return (FORMAT_ERROR);
 	pos = pos + 2;
-	if (line[pos] != ' ' || line[pos] != '|' || line[pos] != ' ')
+	if (line[pos] != ' ' || line[pos + 1] != '|' || line[pos + 2] != ' ')
 		return (FORMAT_ERROR);
-	pos = pos + 2;
+	pos = pos + 3;
 
 	std::string	rate = "";
 
@@ -148,12 +148,16 @@ static	void	show_error_switching(int error_num)
 	{
 		case FORMAT_ERROR:
 			std::cout << " FORMAT ERROR" << std::endl;
+			break;
 		case MINUSNUM_ERROR:
 			std::cout << " HANDLING POSITIVE NUM" << std::endl;
+			break;
 		case OVERNUM_ERROR:
 			std::cout << " TOO LARGE NUM" << std::endl;
+			break;
 		case NUMFORMAT_ERROR:
 			std::cout << " THIS IS ... NUM ... ? CHECK IT !" << std::endl;
+			break;
 	}
 }
 
@@ -208,6 +212,7 @@ void	read_file(std::string file, std::map<std::string, double> csv_data)
 			pos = pos + 3;
 			val = obtain_rate_info(line, &pos);
 			val_num = stringToDouble(val);
+			itr = csv_data.lower_bound(key);
 			if (itr == csv_data.begin() && key != itr->first)
 				std::cout << key << " is not founded!!" << std::endl;
 			else if (val_num > 1000)
@@ -234,7 +239,7 @@ int main(int argc, char **argv)
 	if (database.line_correctlyexit() == false)
 	{
 		std::cout << "========================" << std::endl;
-		std::cout << "<<       CAUTION      >>" << std::endl;
+		std::cout << "<<      CAUTION       >>" << std::endl;
 		std::cout << "========================" << std::endl;
 		std::cout << "|  CSV FILE IS MISSED  |" << std::endl;
 		std::cout << "========================" << std::endl;
