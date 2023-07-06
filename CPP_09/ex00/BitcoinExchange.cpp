@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:01 by user              #+#    #+#             */
-/*   Updated: 2023/07/05 23:01:11 by user             ###   ########.fr       */
+/*   Updated: 2023/07/06 13:39:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,6 @@ bool BitcoinExchange::date_ch()
 	int year_int;
 
     iss >> year_int;
-	// std::cout << this->year << this->month << this->day << std::endl;
 	if ((this->month == "02" && (year_int % 400) == 0) || (this->month == "02" && (year_int % 4) == 0 && (year_int % 100) != 0))
 		return (uru_ch());
 	else if (this->month == "02")
