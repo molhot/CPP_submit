@@ -6,30 +6,79 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 22:29:57 by user              #+#    #+#             */
-/*   Updated: 2023/07/06 19:36:22 by user             ###   ########.fr       */
+/*   Updated: 2023/07/06 21:30:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-static void	exec_plus(int first, int second, RPN *line)
+static bool	exec_plus(int first, int second, RPN *line)
 {
+	if ((first > 0 && second > 0) && INT_MAX - first < second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
+	else if ((first < 0 && second < 0) && (INT_MIN - first) > second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
 	line->append(first + second);
+	return (true);
 }
 
-static void	exec_minus(int first, int second, RPN *line)
+static bool	exec_minus(int first, int second, RPN *line)
 {
+	if ((first > 0 && second < 0) && INT_MAX - first < (-1 * second))
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
+	else if ((first < 0 && second > 0) && (INT_MIN - second) > (-1 * second))
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
 	line->append(second - first);
+	return (true);
 }
 
-static void	exec_times(int first, int second, RPN *line)
+static bool	exec_times(int first, int second, RPN *line)
 {
+	if ((first > 0 && second > 0) && (INT_MAX / first) < second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
+	else if ((first > 0 && second < 0) && (INT_MIN / first) > second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
+	else if ((first < 0 && second > 0) && (INT_MIN / first) < second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
+	else if ((first < 0 && second < 0) && (INT_MAX / first) > second)
+	{
+		std::cout << "first -> " << first << " and second -> " << second << " times is over INT_MAX" << std::endl;
+		return (false);
+	}
 	line->append(first * second);
+	return (true);
 }
 
-static void	exec_divide(int first, int second, RPN *line)
+static bool	exec_divide(int first, int second, RPN *line)
 {
+	if (first == 0)
+	{
+		std::cout << "divide zero error" << std::endl;
+		return (false);
+	}
 	line->append(second / first);
+	return (true);
 }
 
 bool	exec_operator(char sub, RPN *line)
@@ -47,21 +96,24 @@ bool	exec_operator(char sub, RPN *line)
 	second = line->obtain_top();
 	line->stack_pop();
 	if (sub == '+')
-		exec_plus(first, second, line);
+		return (exec_plus(first, second, line));
 	else if (sub == '-')
-		exec_minus(first, second, line);
+		return (exec_minus(first, second, line));
 	else if (sub == '*')
-		exec_times(first, second, line);
+		return (exec_times(first, second, line));
 	else if (sub == '/')
-	{
-		if (first == 0)
-		{
-			std::cout << "divide zero error" << std::endl;
-			return (false);
-		}
-		exec_divide(first, second, line);
-	}
+		return (exec_divide(first, second, line));
 	return (true);
+}
+
+static	void	show_stack(std::stack<int> num_stack)
+{
+	std::cout << "=========" << std::endl;
+	while (num_stack.size() != 0)
+	{
+		std::cout << num_stack.top() << std::endl;
+		num_stack.pop();
+	}
 }
 
 static	bool exec_calc(std::string input, RPN *line)
@@ -72,10 +124,18 @@ static	bool exec_calc(std::string input, RPN *line)
 	pos = 0;
 	while (input[pos] != '\0')
 	{
-		line->skipping_emp_and_int(input, &pos);
-		if (exec_operator(input[pos], line) == false)
+		line->skipping_emp(input, &pos);
+		if (input[pos] == '\0')
+			break;
+		if (line->num_ch(input[pos]) == true)
+		{
+			if (line->ready_numstack(input, &pos) == false)
+				return (false);
+		}
+		else if (exec_operator(input[pos], line) == false)
 			return (false);
-		pos++;
+		else
+			pos++;
 	}
 	if (line->obtain_stacksize() != 1)
 		std::cout << "this stack not good" << std::endl;
@@ -97,7 +157,6 @@ int main(int argc, char **argv)
 		std::cout << "your input is incorrect" << std::endl;
 		return (1);
 	}
-	std::cout << "cals ready" << std::endl;
 	if (exec_calc(argv[1], &line) == false)
 		return (1);
 }
