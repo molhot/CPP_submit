@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:20 by user              #+#    #+#             */
-/*   Updated: 2023/05/20 20:29:03 by user             ###   ########.fr       */
+/*   Updated: 2023/07/06 23:35:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,55 @@ bool PmergeMe::add_nbr(int nbr)
 	return (true);
 }
 
+int PmergeMe::stringToInt(const std::string& str)
+{
+    std::istringstream iss(str);
+    int result;
+    iss >> result;
+    return result;
+}
+
+bool PmergeMe::num_formatch(const std::string& str)
+{
+	size_t	pos = 0;
+
+	while (str[pos] != '\0')
+	{
+		if ('0' <= str[pos] && str[pos] <= '9')
+			pos++;
+		else
+			return (false);
+	}
+	return (true);
+}
+
+bool PmergeMe::num_overdch(const std::string& num_str)
+{
+	size_t	num = 0;
+	size_t	pos = 0;
+
+	while (num_str[pos] != '\0')
+	{
+		num = (num * 10) + static_cast<size_t>(num_str[pos] - 48);
+		pos++;
+		if (num > static_cast<size_t>(INT_MAX))
+		{
+			std::cout << "num_str -> " << num_str << " is over INT_MAX" << std::endl;
+			return (false);
+		}
+	}
+	return (true);
+}
+
+bool PmergeMe::inputnumch(const std::string& str)
+{
+	if (num_formatch(str) == false)
+		return (false);
+	if (num_overdch(str) == false)
+		return (false);
+	return (true);
+}
+
 PmergeMe::PmergeMe(char **any)
 {
 	size_t		pos;
@@ -39,22 +88,26 @@ PmergeMe::PmergeMe(char **any)
 	int			any_nbr;
 
 	std::cout << "Pmerge constructor called" << std::endl;
+	this->exec_ok = true;
 	pos = 1;
 	while (any[pos] != NULL)
 	{
 		try
 		{
 			any_in = any[pos];
-			any_nbr = std::stoi(any_in);
+			if (inputnumch(any_in) == false)
+				throw PmergeMe::MyError();
+			any_nbr = stringToInt(any_in);
 			if (add_nbr(any_nbr) == false)
 				throw PmergeMe::MyError();
 		}
 		catch(const std::exception& e)
 		{
 			std::cout << any[pos] << "input nbr is something wrong format" << std::endl;
+			this->exec_ok = false;
+			break;
 		}
 		pos++;
-		
 	}
 }
 
@@ -215,6 +268,11 @@ void	PmergeMe::sort_list()
 {
 	std::list<int>	list_sorted;
 
+	if (this->exec_ok == false)
+	{
+		std::cout << "input is wrong so can not exec" << std::endl;
+		return;
+	}
 	clock_t	start = clock();
 	list_sorted = separate_list(this->merge_list);
 	clock_t	end = clock();
@@ -310,6 +368,11 @@ void	PmergeMe::sort_vector()
 {
 	std::vector<int>	vect_sorted;
 
+	if (this->exec_ok == false)
+	{
+		std::cout << "input is wrong so can not exec" << std::endl;
+		return;
+	}
 	clock_t	start = clock();
 	vect_sorted = separate_vect(this->merge_vector);
 	clock_t	end = clock();

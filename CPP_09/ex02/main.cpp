@@ -6,14 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:54:16 by user              #+#    #+#             */
-/*   Updated: 2023/05/20 20:25:06 by user             ###   ########.fr       */
+/*   Updated: 2023/07/06 23:30:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 int main(int argc, char **argv)
-{	
+{
 	if (argc == 1)
 	{
 		std::cout << "please input some positive integer" << std::endl;
@@ -21,9 +21,19 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	PmergeMe	pm(argv);
-	
-	pm.show_containerinput();
+  size_t  pos = 1;
+
+	//pm.show_containerinput();
+  std::cout << "=======================" << std::endl;
+  while (pos != static_cast<size_t>(argc))
+  {
+    std::cout << argv[pos] << " ";
+    pos++;
+  }
+  std::cout << std::endl;
+  std::cout << "=======================" << std::endl;
 	pm.sort_list();
+  std::cout << "=======================" << std::endl;
 	pm.sort_vector();
 }
 
