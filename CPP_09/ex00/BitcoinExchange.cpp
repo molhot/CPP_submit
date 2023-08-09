@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:01 by user              #+#    #+#             */
-/*   Updated: 2023/07/06 13:39:49 by user             ###   ########.fr       */
+/*   Updated: 2023/08/09 20:36:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ BitcoinExchange::BitcoinExchange()
 		this->csv_correct_ornot = reading_csv(&(this->csv_info));
 	else
 	{
-		std::cout << "data.csv doew not exists" << std::endl;
+		std::cout << "data.csv does not exists" << std::endl;
 		this->csv_correct_ornot = false;
 	}
 }

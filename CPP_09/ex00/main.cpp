@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:49:07 by user              #+#    #+#             */
-/*   Updated: 2023/07/05 23:12:31 by user             ###   ########.fr       */
+/*   Updated: 2023/08/09 21:05:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,23 @@ static bool date_ch(std::string key)
 		return (addmonth_ch(day));
 }
 
+static bool check_firstline(std::string const &line)
+{
+	std::istringstream iss(line);
+	std::string token;
+
+	iss >> token;
+	if (token != "data")
+		return (false);
+	iss >> token;
+	if (token != "|")
+		return (false);
+	iss >> token;
+	if (token != "value")
+		return (false);
+	return (true);
+}
+
 void	read_file(std::string file, std::map<std::string, double> csv_data)
 {
 	std::ifstream							subject_file(file.c_str());
@@ -292,6 +309,12 @@ void	read_file(std::string file, std::map<std::string, double> csv_data)
 	size_t									pos;
 	std::map<std::string, double>::iterator	itr;
 
+	std::getline(subject_file, line);
+	if (check_firstline(line) == false)
+	{
+		std::cout << line;
+		show_error_switching(1);
+	}
 	while (std::getline(subject_file, line))
 	{
 		std::string					key = "";
@@ -311,7 +334,7 @@ void	read_file(std::string file, std::map<std::string, double> csv_data)
 			key = obtain_day_info(line, &pos);
 			if (date_ch(key) == false)
 				std::cout << key << " NOT CORRECT DATE INFO" << std::endl;
-			else
+			else//doubleの値がおかしい時が変かも
 			{
 				pos = pos + 3;
 				val = obtain_rate_info(line, &pos);
